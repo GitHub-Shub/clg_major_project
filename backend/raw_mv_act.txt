@@ -1,12 +1,11 @@
-2
 1409070/2020/MVL Section
-jftLVªh lañ Mhñ ,yñ—(,u)04@0007@2003—19
-REGISTERED NO. DL—(N)04/0007/2003—19
+jftLVªh lañ Mhñ ,yñ-(,u)04@0007@2003-19
+REGISTERED NO. DL-(N)04/0007/2003-19
 vlk/kkj.k
 EXTRAORDINARY
 Hkkx [k.M
-II — 1
-PART II — Section 1
+II - 1
+PART II - Section 1
 izkf/kdkj ls izdkf'kr
 PUBLISHED BY AUTHORITY
 lañ ubZ fnYyh] 'kqØokj] vxLr 9] 2019@Jko.k 18] 1941 ¼'kd½
@@ -18,13 +17,13 @@ MINISTRY OF LAW AND JUSTICE
 (Legislative Department)
 New Delhi, the 9th August, 2019/Shravana 18, 1941 (Saka)
 The following Act of Parliament received the assent of the President on the
-9th August, 2019, and is hereby published for general information:—
+9th August, 2019, and is hereby published for general information:-
 THE MOTOR VEHICLES (AMENDMENT) ACT, 2019
 NO. 32 OF 2019
 [9th August, 2019.]
 An Act further to amend the Motor Vehicles Act, 1988.
 BE it enacted by Parliament in the Seventieth Year of the Republic of India as
-follows:—
+follows:-
 CHAPTER I
 PRELIMINARY
 1. (1) This Act may be called the Motor Vehicles (Amendment) Act, 2019. Short title and
@@ -34,13 +33,12 @@ in the Official Gazette, appoint and different dates may be appointed for differ
 of this Act and any reference in any such provision to the commencement of this Act shall be
 construed as a reference to the coming into force of that provision.
 59 of 1988. 2. In the Motor Vehicles Act, 1988 (hereinafter referred to as the principal Act), in Amendment
-section 2,— of section 2.
-(i) for clause (1), the following clauses shall be substituted, namely:—
+section 2,- of section 2.
+(i) for clause (1), the following clauses shall be substituted, namely:-
 ‘(1) “adapted vehicle” means a motor vehicle either specially designed
 and constructed, or to which alterations have been made under sub-section (2)
-3
 1409070/2020/MVL Section
-2 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+2 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 of section 52, for the use of a person suffering from any physical defect or
 disability, and used solely by or for such person;
 (1A) “aggregator” means a digital intermediary or market place for a
@@ -48,13 +46,13 @@ passenger to connect with a driver for the purpose of transportation;
 (1B) “area”, in relation to any provision of this Act, means such area as the
 State Government may, having regard to the requirements of that provision,
 specify by notification in the Official Gazette;’;
-(ii) after clause (4), the following clause shall be inserted, namely:—
+(ii) after clause (4), the following clause shall be inserted, namely:-
 ‘(4A) “community service” means an unpaid work which a person is required
 to perform as a punishment for an offence committed under this Act;’;
-(iii) after clause (9), the following clause shall be inserted, namely:—
+(iii) after clause (9), the following clause shall be inserted, namely:-
 ‘(9A) “driver refresher training course” means the course referred to in
 sub-section (2A) of section 19;’;
-(iv) after clause (12), the following clause shall be inserted, namely:—
+(iv) after clause (12), the following clause shall be inserted, namely:-
 ‘(12A) “golden hour” means the time period lasting one hour following a
 traumatic injury during which there is highest likelihood of preventing death by
 providing prompt medical care;’;
@@ -63,14 +61,14 @@ providing prompt medical care;’;
 shall be substituted;
 (vii) in clause (26), for the words “invalid carriage”, the words “adapted vehicle”
 shall be substituted;
-(viii) after clause (38), the following clause shall be inserted, namely:—
+(viii) after clause (38), the following clause shall be inserted, namely:-
 ‘(38A) “scheme” means a scheme framed under this Act;’;
-(ix) after clause (42), the following clause shall be inserted, namely:—
+(ix) after clause (42), the following clause shall be inserted, namely:-
 ‘(42A) “testing agency” means any entity designated as a testing agency
 under section 110B;’;
 (x) in clause (49), after the word "rests", the words "or moves" shall be inserted.
 Insertion of 3. After section 2A of the principal Act, the following section shall be inserted,
-new section namely:—
+new section namely:-
 2B.
 Promotion of “2B. Notwithstanding anything contained in this Act and subject to such
 innovation. conditions as may be prescribed by the Central Government, in order to promote
@@ -78,16 +76,15 @@ innovation, research and development in the fields of vehicular engineering,
 mechanically propelled vehicles and transportation in general, the Central Government
 may exempt certain types of mechanically propelled vehicles from the application of
 the provisions of this Act.”.
-Amendment 4. In section 8 of the principal Act,—
+Amendment 4. In section 8 of the principal Act,-
 of section 8.
 (i) in sub-section (1), for the words “the licensing authority having jurisdiction
 in the area”, the words “any of the licensing authority in the State” shall be substituted;
 (ii) in sub-section (2), for the words “and with such fee”, the words “with such
 fee and submit in such manner, including electronic means” shall be substituted;
-(iii) in sub-section (3),—
+(iii) in sub-section (3),-
 (a) after the word “application”, the words “to drive a transport vehicle
 made” shall be inserted;
-4
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 3
 (b) the proviso shall be omitted;
@@ -96,19 +93,19 @@ SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 3
 (v) in sub-section (5), for the words “passes to the satisfaction of the licensing
 authority such test”, the words “satisfies such conditions” shall be substituted;
 (vi) in sub-section (6), after the proviso, the following provisos shall be inserted,
-namely:—
+namely:-
 “Provided further that a licencing authority may issue a learner’s licence in
 electronic form and such manner as may be prescribed by the Central
 Government.:
 Provided also that the licensing authority may, before issuing the license,
 verify the identity of the applicant in such manner as may be prescribed by the
 Central Government.”.
-5. In section 9 of the principal Act,— Amendment
+5. In section 9 of the principal Act,- Amendment
 of section 9.
 (i) in sub-section (1), for the words “the licensing authority having jurisdiction
 in the area”, the words “any licensing authority in the State” shall be substituted;
 (ii) in sub-section (3), for the second proviso, the following proviso shall be
-substituted, namely:—
+substituted, namely:-
 “Provided further that a driving licence for driving an adapted vehicle may
 be issued to the applicant, if the licensing authority is satisfied that he is fit to
 drive such motor vehicle.”;
@@ -119,16 +116,16 @@ and figures “and such applicant shall be required to complete a remedial drive
 course from any school or establishment under section 12” shall be inserted.
 6. In section 10 of the principal Act, in sub-section (2), in clause (c), for the words Amendment
 “invalid carriage”, the words “adapted vehicle” shall be substituted. of section 10.
-7. In section 11 of the principal Act,— Amendment
+7. In section 11 of the principal Act,- Amendment
 of section 11.
 (i) in sub-section (1), for the words “the licensing authority having jurisdiction
 in the area”, the words “any licensing authority in the State” shall be substituted;
-(ii) in sub-section (2), the following proviso shall be inserted, namely:—
+(ii) in sub-section (2), the following proviso shall be inserted, namely:-
 “Provided that the licensing authority may, before issuing the license
 verify the identity of the applicant in such manner as may be prescribed by the
 Central Government.”.
 8. In section 12 of the principal Act, after sub-section (4), the following sub-sections Amendment
-shall be inserted, namely:— of section 12.
+shall be inserted, namely:- of section 12.
 “(5) Notwithstanding anything contained in any other provision, where any
 school or establishment has been accredited by a body notified by the Central
 Government under any other law for the time being in force, any person who has
@@ -139,21 +136,20 @@ type of motor vehicle.
 remedial driver training course referred to in sub-section (5) of section 9 shall be such
 as may be prescribed by the Central Government and that Government may make rules
 for the regulation of such schools or establishments.”.
-5
 1409070/2020/MVL Section
-4 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
-Amendment 9. In section 14 of the principal Act, in sub-section (2),—
+4 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
+Amendment 9. In section 14 of the principal Act, in sub-section (2),-
 of section 14.
-(i) in clause (a),—
+(i) in clause (a),-
 (A) for the words “three years”, the words “five years” shall be substituted;
 (B) in the proviso, for the portion beginning with the words “one year”
 and ending with the word “and” the words “three years and renewal thereof
 shall be subject to such conditions as the Central Government may prescribe;
 and”, shall be substituted;
-(ii) for clause (b), the following clause shall be substituted, namely:—
+(ii) for clause (b), the following clause shall be substituted, namely:-
 “(b) in the case of any other licence, subject to such conditions as the
 Central Government may prescribe, if the person obtaining the licence, either
-originally or on renewal thereof,—
+originally or on renewal thereof,-
 (i) has not attained the age of thirty years on the date of issue or,
 renewal thereof, be effective until the date on which such person attains
 the age of forty years; or
@@ -168,30 +164,29 @@ years; or
 the case may be, renewal thereof, be effective for a period of five years
 from the date of such issue or renewal.”;
 (iii) the proviso shall be omitted.
-Amendment 10. In section 15 of the principal Act,—
+Amendment 10. In section 15 of the principal Act,-
 of section 15.
 (i) in sub-section (1), in the first proviso, for the words “more than thirty days”,
 the words “either one year prior to date of its expiry or within one year” shall be
 substituted;
 (ii) in sub-section (3), for the words “thirty days”, the words “one year” shall be
 substituted; and
-(iii) in sub-section (4),—
+(iii) in sub-section (4),-
 (a) for the words “thirty days”, the words “one year” shall be substituted;
 and
 (b) in the second proviso for the words “five years after the driving license
 has ceased to be effective, the licensing authority may”, the words “one year
 after the driving licence has ceased to be effective, the licensing authority shall”
 shall be substituted.
-Amendment 11. In section 19 of the principal Act,—
+Amendment 11. In section 19 of the principal Act,-
 of section 19.
-(i) after sub-section (1), the following sub-section shall be inserted, namely:—
+(i) after sub-section (1), the following sub-section shall be inserted, namely:-
 “(1A) Where a licence has been forwarded to the licensing authority under
 sub-section (4) of section 206, the licensing authority, if satisfied after giving the
 holder of the driving licence an opportunity of being heard, may either discharge
 the holder of a driving licence or, it may for detailed reasons recorded in writing,
 make an order disqualifying such person from holding or obtaining any licence
-to drive all or any class or description of vehicles specified in the licence—
-6
+to drive all or any class or description of vehicles specified in the licence-
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 5
 (a) for a first offence, for a period of three months;
@@ -203,11 +198,11 @@ domain in such manner as may be prescribed by the Central Government.”;
 (ii) in sub-section (2),––
 (a) after the word, brackets and figure “sub-section (1)”, the words,
 brackets, figure and letter “or sub-section (1A)” shall be inserted;
-(b) for the proviso, the following proviso shall be substituted, namely:—
+(b) for the proviso, the following proviso shall be substituted, namely:-
 “Provided that the driving licence shall be returned to the holder at
 the end of the period of disqualification only if he successfully completes
 the driver refresher training course.”;
-(iii) after sub-section (2), the following sub-sections shall be inserted, namely:—
+(iii) after sub-section (2), the following sub-sections shall be inserted, namely:-
 “(2A) The licence holder whose licence has been suspended shall undergo
 the driver refresher training course from a school or establishment licenced and
 regulated under section 12 or such other agency, as may be notified by the
@@ -217,7 +212,7 @@ course shall be such as may be prescribed by the Central Government.”;
 (iv) in sub-section (3), after the word, brackets and figure “sub-section (1)”, the
 words, brackets, figure and letter “or sub-section (1A)” shall be inserted.
 12. After section 25 of the principal Act, the following section shall be inserted, Insertion of
-namely:— new section
+namely:- new section
 25A.
 “25A. (1) The Central Government shall maintain a National Register of Driving National
 Licences in such form and manner as may be prescribed. Register of
@@ -233,7 +228,7 @@ such form and manner as may be prescribed by the Central Government.
 (5) The State Governments shall be entitled to access the National Register and
 update their records in such manner as may be prescribed by the Central Government.”.
 13. For section 26 of the principal Act, the following section shall be substituted, Substitution of
-namely:— new section
+namely:- new section
 for section 26.
 “26. Each State Government shall maintain, in such form as may be prescribed by Maintenance
 the Central Government, a register to be known as the State Register of Driving Licences, of State
@@ -244,21 +239,20 @@ State Government, containing particulars, including––
 Licences.
 (a) names and addresses of holders of driving licences;
 (b) licence numbers;
-7
 1409070/2020/MVL Section
-6 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+6 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 (c) dates of issue or renewal of licences;
 (d) dates of expiry of licences;
 (e) classes and types of vehicles authorised to be driven; and
 (f) such other particulars as the Central Government may prescribe.”.
-Amendment 14. In section 27 of the principal Act,—
+Amendment 14. In section 27 of the principal Act,-
 of section 27.
-(i) after clause (d), the following clauses shall be inserted, namely:—
+(i) after clause (d), the following clauses shall be inserted, namely:-
 “(da) the form and manner in which a licensing authority may issue a
 learner’s licence under sub-section (6) of section 8;
 (db) the manner in which a licensing authority may verify the identity of
 the applicant under the third proviso to sub-section (6) of section 8;”;
-(ii) after clause (j), the following clauses shall be inserted, namely:—
+(ii) after clause (j), the following clauses shall be inserted, namely:-
 “(ja) the curriculum of training modules and the regulation of schools and
 establishments under sub-section (6) of section 12;
 (jb) the conditions for the renewal of licence to drive transport vehicles
@@ -266,12 +260,12 @@ carrying goods of dangerous or hazardous nature and other motor vehicles
 under clause (a) and clause (b) of sub-section (2) of section 14;
 (jc) the manner in which a licensing authority may verify the identity of the
 applicant under the third proviso to sub-section (2) of section 11;”;
-(iii) after clause (n), the following clauses shall be inserted, namely:—
+(iii) after clause (n), the following clauses shall be inserted, namely:-
 “(na) the manner of placing in the public domain of the name of the licence
 holder as referred to in sub-section (1A) of section 19;
 (nb) providing for the nature, syllabus and duration of the driver refresher
 training course as referred to in sub-section (2B) of section 19;”;
-(iv) after clause (o), the following clause shall be inserted, namely:—
+(iv) after clause (o), the following clause shall be inserted, namely:-
 “(oa) all or any of the matters referred to in section 25A;”;
 (v) in clause (p), the words, brackets and figure “sub-section (1) of” shall be
 omitted.
@@ -282,7 +276,7 @@ of section 40. “any registering authority in the State” shall be substituted
 Amendment 17. In section 41 of the principal Act,––
 of section 41.
 (i) in sub-section (1), after the proviso, the following proviso shall be inserted,
-namely:—
+namely:-
 “Provided further that in the case of a new motor vehicle, the application
 for registration in the State shall be made by the dealer of such motor vehicle, if
 the new motor vehicle is being registered in the same State in which the dealer is
@@ -291,29 +285,28 @@ situated.”;
 (a) for the words “to the owner of a motor vehicle registered by it a
 certificate of registration”, the words “a certificate of registration in the name of
 the owner” shall be substituted;
-8
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 7
-(iii) in sub-section (6), the following proviso shall be inserted, namely:—
+(iii) in sub-section (6), the following proviso shall be inserted, namely:-
 “Provided that in case of a new motor vehicle, the application for the
 registration of which is made under the second proviso to sub-section (1), such
 motor vehicle shall not be delivered to the owner until such registration mark is
 displayed on the motor vehicle in such form and manner as may prescribed by
 the Central Government.”;
-(iv) in sub-section (7),—
+(iv) in sub-section (7),-
 (a) the words “other than a transport vehicle” shall be omitted; and
 (b) after the words “date of issue of such certificate”, the words “or for
 such period as may be prescribed by the Central Government” shall be inserted;
 (v) in sub-section (8), the words “other than a transport vehicle,” shall be omitted;
-(vi) in sub-section (10),—
+(vi) in sub-section (10),-
 (a) for the words “for a period of five years”, the words “for such period,
 as may be prescribed by the Central Government” shall be substituted;
-(b) the following proviso shall be inserted, namely:—
+(b) the following proviso shall be inserted, namely:-
 “Provided that the Central Government may prescribe different period
 of renewal for different types of motor vehicles.”;
 (vii) sub-sections (11), (12) and (13) shall be omitted.
 18. For section 43 of the principal Act, the following section shall be substituted, Substitution of
-namely:— new section
+namely:- new section
 for section 43.
 “43. Notwithstanding anything contained in section 40, the owner of a motor Temporary
 vehicle may apply to any registering authority or other authority as may be prescribed Registration.
@@ -325,7 +318,7 @@ temporarily, within the State and issue a certificate of registration and regist
 for a period of one month in such manner as may be prescribed by the State
 Government.”.
 19. For section 44 of the principal Act, the following section shall be substituted, Substitution of
-namely:— new section
+namely:- new section
 for section 44.
 “44. (1) Subject to such terms and conditions as may be prescribed by the Production of
 Central Government in this behalf, a motor vehicle sold by an authorised dealer shall vehicle at the
@@ -337,35 +330,34 @@ for the first time.
 Government, a person in whose name a certificate of registration has been issued shall
 not be required to produce the vehicle registered or transferred before a registering
 authority.”.
-20. In section 49 of the principal Act,— Amendment
+20. In section 49 of the principal Act,- Amendment
 of section 49.
 (i) in sub-section (1), for the words “registering authority, to that other registering
 authority”, the words “State, to any registering authority in that State” shall be substituted;
-(ii) after sub-section (1), the following sub-section shall be inserted, namely:—
+(ii) after sub-section (1), the following sub-section shall be inserted, namely:-
 “(1A) The intimation under sub-section (1) may be sent to the appropriate
 registering authority in electronic form along with the electronic form of such
-9
 1409070/2020/MVL Section
-8 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+8 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 documents, including proof of authentication in such manner as may be
 prescribed by the Central Government.”;
 (iii) in sub-section (2), for the words “one hundred rupees”, the words “five
 hundred rupees” shall be substituted.
-Amendment 21. In section 52 of the principal Act,—
+Amendment 21. In section 52 of the principal Act,-
 of section 52.
 (i) in sub-section (1), for the second proviso, the following proviso shall be
-substituted, namely:—
+substituted, namely:-
 “Provided further that the Central Government may prescribe
 specifications, conditions for approval, retrofitment and other related matters
 for the alteration of motor vehicles and in such cases, the warranty granted by
 the manufacturer shall not be considered as void for the purposes of such
 alteration or retrofitment.”;
-(ii) after sub-section (1), the following sub-section shall be inserted, namely:—
+(ii) after sub-section (1), the following sub-section shall be inserted, namely:-
 “(1A) A manufacturer of a motor vehicle shall on the direction issued by
 the Central Government, alter or retrofit safety equipment, or any other equipment
 in accordance with such standards and specifications as may be specified by
 the Central Government.”;
-(iii) for sub-section (2), the following sub-section shall be substituted, namely:—
+(iii) for sub-section (2), the following sub-section shall be substituted, namely:-
 “(2) Notwithstanding anything contained in sub-section (1), any person
 may, with the subsequent approval of the registering authority, alter or cause to
 be altered any vehicle owned by him to be converted into an adapted vehicle:
@@ -374,7 +366,7 @@ prescribed by the Central Government.”;
 (iv) in sub-section (3), the words, brackets and figure “or by reason of replacement
 of its engine without such approval under sub-section (2)” shall be omitted.
 Amendment 22. In section 55 of the principal Act, after sub-section (5), the following sub-section
-of section 55. shall be inserted, namely:—
+of section 55. shall be inserted, namely:-
 “(5A) If any registering authority or other prescribed authority has reason to
 believe that any motor vehicle within its jurisdiction has been used in the commission
 of an offence punishable under section 199A, the authority may, after giving the owner
@@ -382,26 +374,25 @@ an opportunity of making a representation in writing, cancel the certificate of 
 of the vehicle for a period of one year:
 Provided that the owner of the motor vehicle may apply for fresh registration in
 accordance with the provisions of section 40 and section 41.".
-Amendment 23. In section 56 of the principal Act,—
+Amendment 23. In section 56 of the principal Act,-
 of section 56.
 (i) in sub-section (1), after the proviso, the following proviso shall be inserted,
-namely:—
+namely:-
 “Provided further that no certificate of fitness shall be granted to a vehicle,
 after such date as may be notified by the Central Government, unless such
 vehicle has been tested at an automated testing station.”;
-(ii) for sub-section (2), the following sub-section shall be substituted, namely:—
+(ii) for sub-section (2), the following sub-section shall be substituted, namely:-
 “(2) The “authorised testing station” referred to in sub-section (1) means
 any facility, including automated testing facilities, authorised by the State
 Government, where fitness testing may be conducted in accordance with the
 rules made by the Central Government for recognition, regulation and control of
 such stations.”;
-10
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 9
 (iii) in sub-section (4), for the proviso, the following provisos shall be substituted,
-namely:—
+namely:-
 “Provided that no such cancellation shall be made by the prescribed
-authority unless,—
+authority unless,-
 (a) such prescribed authority holds such technical qualification as
 may be prescribed by the Central Government and where the prescribed
 authority does not hold the technical qualification, such cancellation is
@@ -412,20 +403,20 @@ vehicle whose certificate of fitness is sought to be cancelled:
 Provided further that if the cancellation is confirmed by the authorised
 testing station, the cost of undertaking the test shall be borne by the owner of
 the vehicle being tested and in the alternative by the prescribed authority.”;
-(iv) after sub-section (5), the following sub-sections shall be inserted, namely:—
+(iv) after sub-section (5), the following sub-sections shall be inserted, namely:-
 “(6) All transport vehicles with a valid certificate of fitness issued under
 this section shall carry, on their bodies, in a clear and visible manner such
 distinguishing mark as may be prescribed by the Central Government.
 (7) Subject to such conditions as the Central Government may prescribe,
 the provisions of this section may be extended to non-transport vehicles.”.
 24. In section 59 of the principal Act, after sub-section (3), the following sub-section Amendment
-shall be inserted, namely:— of section 59.
+shall be inserted, namely:- of section 59.
 “(4) The Central Government may, having regard to the public safety,
 convenience, protection of the environment and the objects of this Act, make rules
 prescribing the manner of recycling of motor vehicles and parts thereof which have
 exceeded their life.”.
 25. After section 62 in the principal Act, the following sections shall be inserted, Insertion of
-namely:— new sections
+namely:- new sections
 62A and 62B.
 “62A. (1) No registering authority shall register any motor vehicle that Prohibition of
 contravenes any rule made under clause (a) of sub-section (1) of section 110. registration
@@ -448,63 +439,61 @@ Motor Vehicles.
 Governments and registering authorities under this Act shall transmit all information
 and data in the State Register of Motor Vehicles to the Central Government in such
 form and manner as may be prescribed by the Central Government.
-11
 1409070/2020/MVL Section
-10 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+10 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 (4) State Governments shall be able to access the National Register of Motor
 Vehicles and update records in accordance with the provisions of this Act and the
 rules made by the Central Government thereunder.”.
 Substitution of 26. For section 63 of the principal Act, the following section shall be substituted,
-new section namely:—
+new section namely:-
 for section 63.
 Maintenance “63. Each State Government shall maintain in such form as may be prescribed by
 of State the Central Government a register to be known as the State Register of Motor Vehicles,
 Registers of
-in respect of the motor vehicles in that State, containing the particulars including—
+in respect of the motor vehicles in that State, containing the particulars including-
 motor
 vehicles. (a) registration numbers;
 (b) years of manufacture;
 (c) classes and types;
 (d) names and addresses of registered owners; and
 (e) such other particulars as may be prescribed by the Central Government.”.
-Amendment 27. In section 64 of the principal Act,—
+Amendment 27. In section 64 of the principal Act,-
 of section 64.
-(i) after clause (d), the following clause shall be inserted, namely:—
+(i) after clause (d), the following clause shall be inserted, namely:-
 “(da) providing for the period of validity of a certificate of registration
 under sub-section (7) of section 41;”;
-(ii) after clause (e), the following clause shall be inserted, namely:—
+(ii) after clause (e), the following clause shall be inserted, namely:-
 “(ea) the period of renewal of certificate of registration of different types
 of motor vehicles under sub-section (10) of section 41;”;
-(iii) after clause (f), the following clauses shall be inserted, namely:—
+(iii) after clause (f), the following clauses shall be inserted, namely:-
 “(fa) the issue of temporary certificate of registration and temporary
 registration mark under section 43;
 (fb) the terms and conditions under which a motor vehicle sold by an
 authorised dealer shall not require production before a registering authority
 under sub-section (1) of section 44;”;
-(iv) after clause (j), the following clause shall be inserted, namely:—
+(iv) after clause (j), the following clause shall be inserted, namely:-
 “(ja) the form and manner for the electronic submission of the intimation
 of change of address, documents to be submitted along with such intimation
 including proof of authentication under sub-section (1A) of section 49;”;
-(v) after clause (l), the following clauses shall be inserted, namely:—
+(v) after clause (l), the following clauses shall be inserted, namely:-
 “(la) specifications, conditions for approval, retrofitment and other related
 matters for the alteration of motor vehicles under sub-section (1) of section 52;
 (lb) the conditions for the alteration of any motor vehicle into an adapted
 vehicle under sub-section (2) of section 52;”;
-(vi) after clause (n), the following clauses shall be inserted, namely:—
+(vi) after clause (n), the following clauses shall be inserted, namely:-
 “(na) the distinguishing mark to be carried on the body of transport vehicles
 under sub-section (6) of section 56;
 (nb) the conditions under which the application of section 56 may be
 extended to non-transport vehicles under sub-section (7) of section 56;
 (nc) the recycling of motor vehicles and parts thereof which have exceeded
 their life under sub-section (4) of section 59;”;
-12
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 11
-(vii) after clause (o), the following clauses shall be inserted, namely:—
+(vii) after clause (o), the following clauses shall be inserted, namely:-
 “(oa) all or any of the matters under sub-section (1) of section 62B;
 (ob) all or any of the matters under sub-section (1) and sub-section (2) of
 section 63;”.
-28. In section 65 of the principal Act, in sub-section (2),— Amendment
+28. In section 65 of the principal Act, in sub-section (2),- Amendment
 of section 65.
 (i) in clause (f), after the word “marks”, the words and figures “under the proviso
 to section 43” shall be inserted;
@@ -512,13 +501,13 @@ to section 43” shall be inserted;
 29. In section 66 of the principal Act,–– Amendment
 of section 66.
 (i) in sub-section (1), after the third proviso, the following proviso shall be
-inserted, namely:—
+inserted, namely:-
 “Provided also that where a transport vehicle has been issued any permit
 or permits, as well as a licence under this Act, such vehicle may be used either
 under the permit, or permits, so issued to it, or under such licence, at the discretion
 of the vehicle owner.”;
 (ii) in sub-section (3), after clause (p), the following clause shall be inserted,
-namely:—
+namely:-
 “(q) to any transport vehicle having been issued a licence under a scheme,
 under sub-section (3) of section 67 or sub-section (1) of section 88A, or plying
 under such orders as may be issued by the Central Government or by the State
@@ -529,7 +518,7 @@ namely:–– new sections
 “66A. The Central Government may develop a National Transportation Policy National
 consistent with the objects of this Act in concurrence with the State Governments and Transportation
 Policy.
-other agencies with a view to—
+other agencies with a view to-
 (i) establish a planning framework for passengers and goods transportation
 within which transport bodies are to operate;
 (ii) establish a medium and long term planning framework for all forms of
@@ -549,15 +538,14 @@ mobility and greater efficiency in transport of goods or livestock or passengers
 and economical use of resources;
 (viii) safeguard the interest of the public and promote equity, while seeking to
 enhance private participation and public-private partnership in the transport sector;
-13
 1409070/2020/MVL Section
-12 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+12 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 (ix) demonstrate an integrated approach to transport and land use
 planning;
 (x) identify the challenges that the National Transportation Policy seeks
 to address; and
 (xi) address any other matter deemed relevant by the Central Government.
-No bar against 66B. No person who holds the permit issued under this Act shall—
+No bar against 66B. No person who holds the permit issued under this Act shall-
 permit holders
 to apply and (a) be disqualified from applying for a licence under the scheme made
 hold licences under sub-section (3) of section 67 or sub-section (1) of section 88A by reason
@@ -565,10 +553,10 @@ under of holding such permit; and
 schemes.
 (b) be required to get such permit cancelled on being issued a licence
 under any scheme made under this Act.”.
-Amendment 31. In section 67 of the principal Act,—
+Amendment 31. In section 67 of the principal Act,-
 of section 67.
-(i) for sub-section (1), the following sub-section shall be substituted, namely:—
-“(1) A State Government, having regard to—
+(i) for sub-section (1), the following sub-section shall be substituted, namely:-
+“(1) A State Government, having regard to-
 (a) the advantages offered to the public, trade and industry by the
 development of motor transport;
 (b) the desirability of co-ordinating road and rail transport;
@@ -580,17 +568,17 @@ may, from time to time, by notification in the Official Gazette issue directions
 both to the State Transport Authority and Regional Transport Authority regarding
 the passengers’ convenience, economically competitive fares, prevention of
 overcrowding and road safety.”;
-(ii) in sub-section (2), the following proviso shall be inserted, namely:—
+(ii) in sub-section (2), the following proviso shall be inserted, namely:-
 “Provided that the State Government may subject to such conditions as
 it may deem fit, and with a view to achieving the objectives specified in
 clause (d) of sub-section (1), relax all or any of the provisions made under this
 Chapter.”;
-(iii) after sub-section (2), the following sub-sections shall be inserted, namely:—
+(iii) after sub-section (2), the following sub-sections shall be inserted, namely:-
 “(3) Notwithstanding anything contained in this Act, the State Government
 may, by notification in the Official Gazette, modify any permit issued under this
 Act or make schemes for the transportation of goods and passengers and issue
 licences under such scheme for the promotion of development and efficiency in
-transportation—
+transportation-
 (a) last mile connectivity;
 (b) rural transport;
 (c) reducing traffic congestion;
@@ -599,7 +587,6 @@ transportation—
 (f) better utilisation of transportation assets;
 (g) the enhancement of economic vitality of the area, through
 competitiveness, productivity and efficiency;
-14
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 13
 (h) the increase in the accessibility and mobility of people;
@@ -613,20 +600,20 @@ system, across and between modes of transport; and
 charged, form of application and grant of a licence including the renewal,
 suspension, cancellation or modification of such licence.”.
 32. In section 72 of the principal Act, in sub-section (2), the following proviso shall be Amendment
-inserted, namely:— of section 72.
+inserted, namely:- of section 72.
 “Provided that the Regional Transport Authority may waive any such condition
 for a stage carriage permit operating in a rural area, as it deems fit.”.
-33. In section 74 of the principal Act,— Amendment
+33. In section 74 of the principal Act,- Amendment
 of section 74.
-(i) in sub-section (2), the following proviso shall be inserted, namely:—
+(i) in sub-section (2), the following proviso shall be inserted, namely:-
 “Provided that the Regional Transport Authority may in the interests of
 last mile connectivity waive any such condition in respect of any such types of
 vehicles as may be specified by the Central Government.”;
 (ii) in sub-section (3), in the proviso to clause (b), after sub-clause (vi), the
-following sub-clause shall be inserted, namely:—
+following sub-clause shall be inserted, namely:-
 “(vii) self-help groups.”.
 34. After section 88 of the principal Act, the following section shall be inserted, Insertion of
-namely:— new section
+namely:- new section
 88A.
 “88A. (1) Notwithstanding anything contained in this Act, the Central Power of
 Government may, by notification in the Official Gazette, modify any permit issued Central
@@ -635,7 +622,7 @@ under this Act or make schemes for national, multimodal and inter-State transpor
 to make
 of goods or passengers, and issue or modify licences under, such scheme for the
 schemes for
-following purposes, namely:— national,
+following purposes, namely:- national,
 multimodal
 (a) last mile connectivity; and inter-State
 transport of
@@ -653,9 +640,8 @@ enabling competitiveness, productivity and efficiency;
 (j) enhancement of the integration and connectivity of the transportation
 system, across and between modes of transport; and
 (k) such other matters as the Central Government may deem fit:
-15
 1409070/2020/MVL Section
-14 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+14 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 Provided that the Central Government may, before taking any action under this
 sub-section seek concurrence of the State Governments.
 (2) Notwithstanding anything contained in sub-section (1), two or more States
@@ -667,15 +653,15 @@ under this sub-section, the schemes made under sub-section (1) shall prevail.".
 Amendment 35. In section 92 of the principal Act, for the words “stage carriage or contract carriage,
 of section 92. in respect of which a permit”, the words “transport vehicle, in respect of which a permit or
 licence” shall be substituted.
-Amendment 36. In section 93 of the principal Act,—
+Amendment 36. In section 93 of the principal Act,-
 of section 93.
 (i) for the marginal heading, the following marginal heading shall be substituted,
-namely:—
+namely:-
 “Agent or canvasser or aggregator to obtain licence.”;
-(ii) in sub-section (1),—
-(a) after clause (ii), the following clause shall be inserted, namely:—
+(ii) in sub-section (1),-
+(a) after clause (ii), the following clause shall be inserted, namely:-
 “(iii) as an aggregator,”;
-(b) the following provisos shall be inserted, namely:—
+(b) the following provisos shall be inserted, namely:-
 “Provided that while issuing the licence to an aggregator the State
 Government may follow such guidelines as may be issued by the Central
 Government:
@@ -685,11 +671,11 @@ regulations made thereunder.”.
 Amendment 37. In section 94 of the principal Act, after the word “permit” occurring at both the
 of section 94. places the words “or licence issued under any scheme” shall be inserted.
 Amendment 38. In section 96 of the principal Act, in sub-section (2), after clause (xxxii), the
-of section 96. following clauses shall be inserted, namely:—
+of section 96. following clauses shall be inserted, namely:-
 “(xxxiia) framing of schemes under sub-section (3) of section 67;
 (xxxiib) the promotion of effective competition, passenger convenience and
 safety, competitive fares and prevention of overcrowding;”.
-Amendment 39. In section 110 of the principal Act,—
+Amendment 39. In section 110 of the principal Act,-
 of section
 110. (i) in sub-section (1), in clause (k), after the words “standards of the
 components”, the words “, including software,” shall be inserted;
@@ -697,12 +683,11 @@ components”, the words “, including software,” shall be inserted;
 “and such rules may lay down the procedure for investigation, the officers empowered
 to conduct such investigations, the procedure for hearing of such matters and the
 penalties to be levied thereunder” shall be inserted;
-(iii) after sub-section (2), the following sub-section shall be inserted, namely:—
+(iii) after sub-section (2), the following sub-section shall be inserted, namely:-
 “(2A) Persons empowered under sub-section (2) to conduct investigations
 referred to in sub-section (2) shall have all the powers of a civil court, while
 trying a suit under the Code of Civil Procedure, 1908 in respect of the following 5 of 1908.
-matters, namely:—
-16
+matters, namely:-
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 15
 (a) summoning and enforcing the attendance of any person and
@@ -711,17 +696,17 @@ examining him on oath;
 (c) receiving evidence on affidavit; and
 (d) any other matter as may be prescribed.”.
 40. After section 110 of the principal Act, the following sections shall be inserted, Insertion of
-namely:— new sections
+namely:- new sections
 110A and
 110B.
 “110A. (1) The Central Government may, by order, direct a manufacturer to recall Recall of
-motor vehicles of a particular type or its variants, if— motor
+motor vehicles of a particular type or its variants, if- motor
 vehicles.
 (a) a defect in that particular type of motor vehicle may cause harm to the
 environment or to the driver or occupants of such motor vehicle or other road
 users; and
 (b) a defect in that particular type of motor vehicle has been reported to
-the Central Government by—
+the Central Government by-
 (i) such percentage of owners, as the Central Government, may by
 notification in the Official Gazette, specify; or
 (ii) a testing agency; or
@@ -731,7 +716,7 @@ component, the Central Government may, by order, direct a manufacturer to recall
 motor vehicles which contain such component, regardless of the type or variants of
 such motor vehicle.
 (3) A manufacturer whose vehicles are recalled under sub-section (1) or
-sub-section (2), shall—
+sub-section (2), shall-
 (a) reimburse the buyers for the full cost of the motor vehicle, subject to
 any hire-purchase or lease-hypothecation agreement; or
 (b) replace the defective motor vehicle with another motor vehicle of similar
@@ -743,7 +728,7 @@ him, he shall inform the Central Government of the defect and initiate recall pr
 and in such case the manufacturer shall not be liable to pay fine under sub-section (3).
 (5) The Central Government may authorise any officer to conduct investigation
 under this section who shall have all the powers of a civil court, while trying a suit
-5 of 1908. under the Code of Civil Procedure, 1908 in respect of the following matters, namely:—
+5 of 1908. under the Code of Civil Procedure, 1908 in respect of the following matters, namely:-
 (a) summoning and enforcing the attendance of any person and examining
 him on oath;
 (b) requiring the discovery and production of any document;
@@ -751,9 +736,8 @@ him on oath;
 (d) any other matter as may be prescribed.
 (6) The Central Government may make rules for regulating the recall of motor
 vehicles, of a particular type or its variants, for any defect which in the opinion of the
-17
 1409070/2020/MVL Section
-16 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+16 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 Central Government, may cause harm to the environment or to the driver or occupants
 of such motor vehicle or to other road users.
 Type- 110B. (1) No motor vehicle, including a trailer or semi-trailer or modular hydraulic
@@ -767,12 +751,11 @@ Provided that the Central Government may, by notification in the Official Gazett
 extend the requirement of type-approval certificate to other vehicles drawn or intended
 to be drawn by a motor vehicle:
 Provided further that such certificate shall not be required for vehicles which
-are—
+are-
 (a) intended for export or display or demonstration or exhibition; or
 (b) used by a manufacturer of motor vehicles or motor vehicle components
 or a research and development centre or a test by agency for testing and
 validation or for data collection, inside factory premises or in a non-public place;
-or
 (c) exempted by the Central Government.
 (2) The manufacturer or importer of motor vehicles including trailers, semi-trailers,
 modular hydraulic trailers and side cars shall submit the prototype of the vehicle to be
@@ -790,9 +773,9 @@ shall be liable for its accreditation and registration to be cancelled.”.
 Amendment 41. In section 114 of the principal Act, in sub-section (1), for the words “authorised in
 of section this behalf by the State Government”, the words “or any other person authorised in this
 114. behalf by the State Government” shall be substituted.
-Amendment 42. In section 116 of the principal Act,—
+Amendment 42. In section 116 of the principal Act,-
 of section
-116. (i) after sub-section (1), the following sub-section shall be inserted, namely:—
+116. (i) after sub-section (1), the following sub-section shall be inserted, namely:-
 “(1A) Notwithstanding anything contained in sub-section (1), the National
 Highways Authority of India constituted under the National Highways Authority
 of India Act, 1988 or any other agency authorised by the Central Government, 68 of 1988.
@@ -806,13 +789,12 @@ Provided that for the purposes of this sub-section, the National Highway
 Authority of India or any other agency authorised by the Central Government
 may seek assistance from the authorities of the State Government and the said
 State Government shall provide such assistance.”;
-18
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 17
 (ii) in sub-section (3), after the words, brackets and figure “provided by
 sub-section (1)”, the words, brackets, figure and letter “or sub-section (1A)” shall be
 inserted.
-43. In section 117 of the principal Act, the following provisos shall be inserted, namely:— Amendment
+43. In section 117 of the principal Act, the following provisos shall be inserted, namely:- Amendment
 of section
 “Provided that the State Government or the authorised authority shall, give 117.
 primacy to the safety of road users and the free flow of traffic in determining such
@@ -822,7 +804,7 @@ Authority of India, constituted under the National Highways Authority of India A
 68 of 1988. 1988 or any other agency authorised by the Central Government, may also determine
 such places.”.
 44. For section 129 of the principal Act, the following section shall be substituted, Substitution of
-namely:— new section
+namely:- new section
 for section
 129.
 ‘129. Every person, above four years of age, driving or riding or being carried on Wearing of
@@ -835,14 +817,14 @@ Sikh, if, while driving or riding on the motorcycle, in a public place, he is we
 turban:
 Provided further that the Central Government may by rules provide for measures
 for the safety of children below four years of age riding or being carried on a motorcycle.
-Explanation.— “Protective headgear” means a helmet which,—
+Explanation.- “Protective headgear” means a helmet which,-
 (a) by virtue of its shape, material and construction, could reasonably be
 expected to afford to the person driving or riding on a motorcycle a degree of
 protection from injury in the event of an accident; and
 (b) is securely fastened to the head of the wearer by means of straps or
 other fastenings provided on the headgear.’.
 45. After section 134 of the principal Act, the following section shall be inserted, Insertion of
-namely:— new section
+namely:- new section
 134A.
 “134A. (1) A Good Samaritan shall not be liable for any civil or criminal action for Protection of
 any injury to or death of the victim of an accident involving a motor vehicle, where Good
@@ -852,28 +834,27 @@ to act while rendering emergency medical or non-medical care or assistance.
 (2) The Central Government may by rules provide for the procedure for
 questioning or examination of the Good Samaritan, disclosure of personal information
 of the Good Samaritan and such other related matters.
-Explanation.—For the purposes of this section, “Good Samaritan” means a
+Explanation.-For the purposes of this section, “Good Samaritan” means a
 person, who in good faith, voluntarily and without expectation of any reward or
 compensation renders emergency medical or non-medical care or assistance at the
 scene of an accident to the victim or transports such victim to the hospital.".
-46. In section 135 of the principal Act,— Amendment
+46. In section 135 of the principal Act,- Amendment
 of section
-(i) in sub-section (1),— 135.
+(i) in sub-section (1),- 135.
 (a) in clause (c), the word “and” shall be omitted;
-19
 1409070/2020/MVL Section
-18 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+18 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 (b) in clause (d), for the word “highways”, the words “highways; and”
 shall be substituted; and
-(ii) after clause (d), the following clause shall be inserted, namely:—
+(ii) after clause (d), the following clause shall be inserted, namely:-
 “(e) any other amenities in the interests of the safety and the convenience
 of the public.”;
-(iii) after sub-section (2), the following sub-section shall be inserted, namely:—
+(iii) after sub-section (2), the following sub-section shall be inserted, namely:-
 “(3) The Central Government may, by notification in the Official Gazette,
 make one or more schemes to conduct in-depth studies on the causes and
 analysis of road accidents.”.
 Insertion of 47. After section 136 of the principal Act, the following section shall be inserted,
-new section namely:—
+new section namely:-
 136A.
 Electronic ‘136A. (1) The State Government shall ensure electronic monitoring and
 monitoring enforcement of road safety in the manner provided under sub-section (2) on national
@@ -885,21 +866,21 @@ of road safety.
 (2) The Central Government shall make rules for the electronic monitoring and
 enforcement of road safety including speed cameras, closed-circuit television cameras,
 speed guns, body wearable cameras and such other technology.
-Explanation.—For the purpose of this section the expression “body wearable
+Explanation.-For the purpose of this section the expression “body wearable
 camera” means a mobile audio and video capture device worn on the body or uniform
 of a person authorised by the State Government.’.
-Amendment 48. In section 137 of the principal Act,—
+Amendment 48. In section 137 of the principal Act,-
 of section
-137. (i) after clause (a), the following clause shall be inserted, namely:—
+137. (i) after clause (a), the following clause shall be inserted, namely:-
 “(aa) providing for the standards of protective headgear and measures for
 the safety of children below the age of four years riding under section 129;”;
-(ii) after clause (b), the following clauses shall be inserted, namely:—
+(ii) after clause (b), the following clauses shall be inserted, namely:-
 “(c) providing for limits of urban city by the State Governments under
 sub-section (1) of section 136A; and
 (d) providing for electronic monitoring and enforcement under
 sub-section (2) of section 136A.”.
 Amendment 49. In section 138 of the principal Act, after sub-section (1), the following sub-section
-of section shall be inserted, namely:—
+of section shall be inserted, namely:-
 138.
 “(1A) The State Government may, in the interest of road safety, make rules for
 the purposes of regulating the activities and access of non-mechanically propelled
@@ -909,15 +890,14 @@ consultation with the National Highways Authority of India.”.
 Omission of 50. Chapter X in the principal Act shall be omitted.
 Chapter X.
 Substitution of 51. For Chapter XI of the principal Act, the following Chapter shall be substituted,
-new Chapter namely:—
+new Chapter namely:-
 XI for
 Chapter XI.
-20
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 19
 ‘CHAPTER XI
 INSURANCE OF MOTOR VEHICLES AGAINST THIRD PARTY RISKS
-145. In this Chapter,— Definitions.
+145. In this Chapter,- Definitions.
 (a) “authorised insurer” means an insurer for the time being carrying on
 general insurance business in India and granted a certificate of registration by
 the Insurance Regulatory and Development Authority of India established under
@@ -954,7 +934,7 @@ of insurance complying with the requirements of this Chapter:
 Provided that in the case of a vehicle carrying, or meant to carry, dangerous or
 hazardous goods, there shall also be a policy of insurance under the Public Liability
 6 of 1991. Insurance Act, 1991.
-Explanation.—For the purposes of this sub-section, a person driving a motor
+Explanation.-For the purposes of this sub-section, a person driving a motor
 vehicle merely as a paid employee, while there is in relation to the use of the vehicle no
 such policy in force as is required by this sub-section, shall not be deemed to act in
 contravention of the sub-section unless he knows or has reason to believe that there
@@ -963,10 +943,9 @@ is no such policy in force.
 the Central Government or a State Government and used for purposes not connected
 with any commercial enterprise.
 (3) The appropriate Government may, by order, exempt from the operation of
-sub-section (1), any vehicle owned by any of the following authorities, namely:—
-21
+sub-section (1), any vehicle owned by any of the following authorities, namely:-
 1409070/2020/MVL Section
-20 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+20 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 (a) the Central Government or a State Government, if the vehicle is used
 for purposes connected with any commercial enterprise;
 (b) any local authority;
@@ -974,9 +953,9 @@ for purposes connected with any commercial enterprise;
 Provided that no such order shall be made in relation to any such authority
 unless a fund has been established and is maintained by that authority in such
 manner as may be prescribed by appropriate Government.
-Explanation.—For the purposes of this sub-section, “appropriate
+Explanation.-For the purposes of this sub-section, “appropriate
 Government” means the Central Government or a State Government, as the case
-may be, and—
+may be, and-
 (i) in relation to any corporation or company owned by the Central
 Government or any State Government, means the Central Government or
 that State Government;
@@ -987,11 +966,11 @@ Government;
 local authority, means that Government which has control over that
 undertaking or authority.
 Requirement 147. (1) In order to comply with the requirements of this Chapter, a policy of
-of policies and insurance must be a policy which—
+of policies and insurance must be a policy which-
 limits of
 liability. (a) is issued by a person who is an authorised insurer; and
 (b) insures the person or classes of persons specified in the policy to the
-extent specified in sub-section (2)—
+extent specified in sub-section (2)-
 (i) against any liability which may be incurred by him in respect of
 the death of or bodily injury to any person including owner of the goods
 or his authorised representative carried in the motor vehicle or damage to
@@ -1000,7 +979,7 @@ motor vehicle in a public place;
 (ii) against the death of or bodily injury to any passenger of a
 transport vehicle, except gratuitous passengers of a goods vehicle, caused
 by or arising out of the use of the motor vehicle in a public place.
-Explanation.—For the removal of doubts, it is hereby clarified that the
+Explanation.-For the removal of doubts, it is hereby clarified that the
 death of or bodily injury to any person or damage to any property of a third party
 shall be deemed to have been caused by or to have arisen out of, the use of a
 vehicle in a public place, notwithstanding that the person who is dead or injured
@@ -1017,7 +996,6 @@ Authority.
 there is issued by the insurer in favour of the person by whom the policy is effected, a
 certificate of insurance in the prescribed form and containing the prescribed particulars
 of any condition subject to which the policy is issued and of any other prescribed
-22
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 21
 matters; and different forms, particulars and matters may be prescribed in different
@@ -1057,8 +1035,8 @@ procedure
 of claim of compensation may make an offer to the claimant for settlement before the
 Claims Tribunal giving such details, within thirty days and after following such
 procedure as may be prescribed by the Central Government.
-(3) If, the claimant to whom the offer is made under sub-section (2),—
-(a) accepts such offer,—
+(3) If, the claimant to whom the offer is made under sub-section (2),-
+(a) accepts such offer,-
 (i) the Claims Tribunal shall make a record of such settlement, and
 such claim shall be deemed to be settled by consent; and
 (ii) the payment shall be made by the insurance company within a
@@ -1080,9 +1058,8 @@ or may have avoided or cancelled the policy, the insurer shall, subject to the p
 third party
 of this section, pay to the person entitled to the benefit of the award any sum not
 risks.
-23
 1409070/2020/MVL Section
-22 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+22 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 exceeding the sum assured payable thereunder, as if that person were the decree
 holder, in respect of the liability, together with any amount payable in respect of costs
 and any sum payable in respect of interest on that sum by virtue of any enactment
@@ -1094,10 +1071,10 @@ be, the Claims Tribunal of the bringing of the proceedings, or in respect of suc
 judgment or award so long as its execution is stayed pending an appeal; and an insurer
 to whom notice of the bringing of any such proceedings is so given shall be entitled to
 be made a party thereto, and to defend the action on any of the following grounds,
-namely:—
+namely:-
 (a) that there has been a breach of a specified condition of the policy,
 being one of the following conditions, namely:––
-(i) a condition excluding the use of the vehicle—
+(i) a condition excluding the use of the vehicle-
 (A) for hire or reward, where the vehicle is on the date of the
 contract of insurance a vehicle not covered by a permit to ply for
 hire or reward; or
@@ -1132,7 +1109,6 @@ judgment or award is given, the insurer had notice through the court concerned o
 bringing of the proceedings and the insurer to whom notice is so given is entitled under
 the corresponding law of the reciprocating country, to be made a party to the proceedings
 and to defend the action on grounds similar to those specified in sub-section (2).
-24
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 23
 (4) Where a certificate of insurance has been issued under sub-section (3) of
@@ -1152,7 +1128,7 @@ company with which the vehicle had been insured, it shall be the duty of the own
 the vehicle to furnish to the tribunal or court the information as to whether the vehicle
 had been insured on the date of the accident, and if so, the name of the insurance
 company with which it is insured.
-Explanation.—For the purposes of this section,—
+Explanation.-For the purposes of this section,-
 (a) “award” means an award made by the Claims Tribunal under
 section 168;
 (b) “Claims Tribunal” means a Claims Tribunal constituted under
@@ -1167,7 +1143,7 @@ what conditions.
 151. (1) Where under any contract of insurance affected in accordance with the Rights of third
 provisions of this Chapter, a person is insured against liabilities which he may incur to party against
 insurers on
-third party, then—
+third party, then-
 insolvency of
 (a) in the event of the person becoming insolvent or making a composition or insured.
 arrangement with his creditors; or
@@ -1186,9 +1162,8 @@ made according to the law of insolvency, then, if any debt provable in insolvenc
 owing by the deceased in respect of a liability to a third party against which he was
 insured under a contract of insurance in accordance with the provisions of this Chapter,
 the deceased debtor’s rights against the insurer in respect of that liability shall,
-25
 1409070/2020/MVL Section
-24 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+24 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 notwithstanding anything to the contrary in any provision of law, be transferred to
 and vest in the person to whom the debt is owing.
 (3) Any condition in a policy issued for the purposes of this Chapter purporting,
@@ -1199,7 +1174,7 @@ administration of the estate of a deceased debtor according to the law of insolv
 shall be of no effect.
 (4) Upon a transfer under sub-section (1) or sub-section (2), the insurer shall be
 under the same liability to the third party as he would have been to the insured person,
-but—
+but-
 (a) if the liability of the insurer to the insured person exceeds the liability
 of the insured person to the third party, nothing in this Chapter shall affect
 the rights of the insured person against the insurer in respect of the excess
@@ -1241,7 +1216,6 @@ or otherwise, he has reasonable ground for supporting that there have or may hav
 been transferred to him under this Chapter rights against any particular insurer, that
 insurer shall be subject to the same duty as is imposed by the said sub-section on the
 persons therein mentioned.
-26
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 25
 (4) The duty to give the information imposed by this section shall include a duty
@@ -1285,7 +1259,7 @@ of action.
 under the provisions of this Chapter, shall not be a bar to the survival of any cause of
 action arising out of such event against his estate or against the insurer.
 156. When an insurer has issued a certificate of insurance in respect of a contract Effect of
-of insurance between the insurer and the insured person, then— certificate of
+of insurance between the insurer and the insured person, then- certificate of
 insurance.
 (a) if and so long as the policy described in the certificate has not been
 issued by the insurer to the insured, the insurer shall, as between himself and
@@ -1303,14 +1277,13 @@ the said certificate.
 issued in accordance with the provisions of this Chapter, transfers to another person certificate of
 insurance.
 the ownership of the motor vehicle in respect of which such insurance was taken
-27
 1409070/2020/MVL Section
-26 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+26 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 together with the policy of insurance relating thereto, the certificate of insurance and
 the policy described in the certificate shall be deemed to have been transferred in
 favour of the person to whom the motor vehicle is transferred with effect from the date
 of its transfer.
-Explanation.—For the removal of doubts, it is hereby clarified that such deemed
+Explanation.-For the removal of doubts, it is hereby clarified that such deemed
 transfer shall include transfer of rights and liabilities of the said certificate of insurance
 and policy of insurance.
 (2) The transferee shall apply within fourteen days from the date of transfer in
@@ -1321,7 +1294,7 @@ policy of insurance in regard to the transfer of insurance.
 Production of 158. (1) Any person driving a motor vehicle in any public place shall, on being
 certain so required by a police officer in uniform authorised in this behalf by the State
 certificates,
-Government, produce—
+Government, produce-
 licence and
 permit in (a) the certificate of insurance;
 certain cases.
@@ -1357,7 +1330,6 @@ driven in contravention of section 146 and on any occasion when the driver was
 required under this section to produce the certificate of insurance.
 (5) In this section, the expression “produce the certificate of insurance” means
 production for examination the relevant certificate of insurance or such other evidence
-28
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 27
 as may be prescribed to prove that the vehicle was not being driven in contravention
@@ -1383,7 +1355,6 @@ it and the property, if any, damaged in such form and within such time as the
 Central Government may prescribe.
 161. (1) Notwithstanding anything contained in any other law for the time being Special
 in force or any instrument having the force of law, the Central Government shall provide provisions as
-to
 for paying in accordance with the provisions of this Act and the scheme made under
 compensation
 sub-section (3), compensation in respect of the death of, or grievous hurt to, persons
@@ -1391,7 +1362,7 @@ in case of hit
 resulting from hit and run motor accidents. and run motor
 accident.
 (2) Subject to the provisions of this Act and the scheme made under
-sub-section (3), there shall be paid as compensation,—
+sub-section (3), there shall be paid as compensation,-
 (a) in respect of the death of any person resulting from a hit and run motor
 accident, a fixed sum of two lakh rupees or such higher amount as may be
 prescribed by the Central Government;
@@ -1406,7 +1377,7 @@ whom such applications may be made, the procedure to be followed by such officer
 or authorities for considering and passing orders on such applications, and all other
 matters connected with, or incidental to, the administration of the scheme and the
 payment of compensation under this section.
-(4) A scheme made under sub-section (3) may provide that,—
+(4) A scheme made under sub-section (3) may provide that,-
 (a) a payment of such sum as may be prescribed by the Central Government
 as interim relief to any claimant under such scheme;
 (b) a contravention of any provision thereof shall be punishable with
@@ -1419,9 +1390,8 @@ Central Government, by such officer or authority to any other officer or authori
 162. (1) Notwithstanding anything contained in the General Insurance Companies Scheme for
 57 of 1972. (Nationalisation) Act, 1972 or any other law for the time being in force or any instrument golden hour.
 having the force of law, the insurance companies for the time being carrying on general
-29
 1409070/2020/MVL Section
-28 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+28 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 insurance business in India shall provide in accordance with the provisions of this Act
 and the schemes made under this Act for treatment of road accident victims, including
 during the golden hour.
@@ -1445,15 +1415,15 @@ provision of this Act other than section 161 or any other law for the time being
 the Claims Tribunal, court or other authority awarding such compensation shall verify
 as to whether in respect of such death or bodily injury compensation has already been
 paid under section 161 or an application for payment of compensation is pending
-under that section, and such Tribunal, court or other authority shall—
+under that section, and such Tribunal, court or other authority shall-
 (a) if compensation has already been paid under section 161, direct the
 person liable to pay the compensation awarded by it to refund to the insurer, so
 much thereof as is required to be refunded in accordance with the provisions of
 sub-section (1);
 (b) if an application for payment of compensation is pending under
 section 161 forward the particulars as to the compensation awarded by it to the insurer.
-Explanation.—For the purpose of this sub-section, an application for
-compensation under section 161 shall be deemed to be pending—
+Explanation.-For the purpose of this sub-section, an application for
+compensation under section 161 shall be deemed to be pending-
 (i) if such application has been rejected, till the date of the rejection
 of the application; and
 (ii) in any other case, till the date of payment of compensation in
@@ -1478,7 +1448,6 @@ compensation payable under this section.
 Scheme for 164A. (1) The Central Government, may make schemes for the provision of
 interim relief interim relief to claimants praying for compensation under this Chapter.
 for claimants.
-30
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 29
 (2) A scheme made under sub-section (1) shall also provide for procedure to
@@ -1486,7 +1455,7 @@ recover funds disbursed under such scheme from the owner of the motor vehicle,
 where the claim arises out of the use of such motor vehicle or other sources as may be
 prescribed by the Central Government.
 164B. (1) The Central Government shall constitute a Fund to be called the Motor Motor Vehicle
-Vehicle Accident Fund and thereto shall be credited— Accident
+Vehicle Accident Fund and thereto shall be credited- Accident
 Fund.
 (a) payment of a nature notified and approved by the Central Government;
 (b) any grant or loan made to the Fund by the Central Government;
@@ -1497,7 +1466,7 @@ Vehicles (Amendment) Act, 2019; and
 Government.
 (2) The Fund shall be constituted for the purpose of providing compulsory
 insurance cover to all road users in the territory of India.
-(3) The Fund shall be utilised for the following, namely:—
+(3) The Fund shall be utilised for the following, namely:-
 (a) treatment of the persons injured in road accidents in accordance with
 the scheme framed by the Central Government under section 162;
 (b) compensation to representatives of a person who died in hit and run
@@ -1513,7 +1482,7 @@ person becomes payable, where amount has been paid out of this Fund to any perso
 the same amount shall be deductible from the claim received by such person from the
 insurance company.
 (6) The Fund shall be managed by such authority or agency as the Central
-Government may specify having regard to the following:—
+Government may specify having regard to the following:-
 (a) knowledge of insurance business of the agency;
 (b) capability of the agency to manage funds; and
 (c) any other criteria as may be prescribed by the Central Government.
@@ -1527,9 +1496,8 @@ Auditor-General of India at such intervals as may be specified by him.
 him in connection with the audit of the accounts of the Fund under this Act shall have
 the same rights, privileges and authority in connection with such audit of the
 Government accounts and, in particular, shall have the right to demand the production
-31
 1409070/2020/MVL Section
-30 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+30 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 of books, accounts, connected vouchers and other documents and papers and to
 inspect any of the offices of the Authority.
 (10) The accounts of the Fund, as certified by the Comptroller and Auditor-
@@ -1544,8 +1512,8 @@ Power of 164C. (1) The Central Government may make rules for the purposes of car
 Central into effect, the provisions of this Chapter.
 Government
 to make rules. (2) Without prejudice to the generality of the foregoing power, such rules may
-provide for—
-(a) the forms to be used for the purposes of this Chapter including,—
+provide for-
+(a) the forms to be used for the purposes of this Chapter including,-
 (i) the form of the insurance policy and the particulars it shall contain
 as referred to in sub-section (3) of section 147;
 (ii) the form for making changes in regard to the fact of transfer in
@@ -1576,7 +1544,6 @@ applying those provisions with prescribed modifications;
 with as referred to in clause (b) of section 145;
 (j) administration of the Fund established under sub-section (3) of section
 146;
-32
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 31
 (k) the minimum premium and the maximum liability of an insurer under
@@ -1612,42 +1579,41 @@ into effect, the provisions of this Chapter other than the matters specified in 
 to make rules.
 section 164C.
 (2) Without prejudice to the generality of the foregoing power, such rules may
-provide for—
+provide for-
 (a) the other authority under sub-section (5) of section 147; and
 (b) any other matter which is to be, or may be, prescribed, or in respect of
 which provision is to be made by rules.”.
 52. In section 165 of the principal Act, in the Explanation, for the words, figures and Amendment
 letter "section 140 and section 163A", the word and figures “section 164” shall be substituted. of section
 165.
-53. In section 166 of the principal Act,— Amendment
+53. In section 166 of the principal Act,- Amendment
 of section
 (i) in sub-section (1), after the proviso, the following proviso shall be inserted, 166.
-namely:—
+namely:-
 “Provided further that where a person accepts compensation under
 section 164 in accordance with the procedure provided under section 149, his
 claims petition before the Claims Tribunal shall lapse.”.
-33
 1409070/2020/MVL Section
-32 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+32 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 (ii) in sub-section (2), the proviso shall be omitted;
-(iii) after sub-section (2), the following sub-section shall be inserted, namely:—
+(iii) after sub-section (2), the following sub-section shall be inserted, namely:-
 “(3) No application for compensation shall be entertained unless it is
 made within six months of the occurrence of the accident.”.
 (iv) in sub-section (4), for the words, brackets and figures "sub-section (6) of
 section 158", the word and figures "section 159" shall be substituted;
-(v) after sub-section (4), the following sub-section shall be inserted, namely:—
+(v) after sub-section (4), the following sub-section shall be inserted, namely:-
 “(5) Notwithstanding anything in this Act or any other law for the time
 being in force, the right of a person to claim compensation for injury in an
 accident shall, upon the death of the person injured, survive to his legal
 representatives, irrespective of whether the cause of death is relatable to or had
 any nexus with the injury or not.”.
-Amendment 54. In section 168 of the principal Act, in sub-section (1),—
+Amendment 54. In section 168 of the principal Act, in sub-section (1),-
 of section
 168. (i) for the word and figures “section 162”, the word and figures “section 163”
 shall be substituted;
 (ii) the proviso shall be omitted.
 Amendment 55. In section 169 of the principal Act, after sub-section (3), the following sub-section
-of section shall be inserted, namely:—
+of section shall be inserted, namely:-
 169.
 “(4) For the purpose of enforcement of its award, the Claims Tribunal shall also
 have all the powers of a Civil Court in the execution of a decree under the Code of Civil
@@ -1664,7 +1630,7 @@ of section hundred rupees”, the words “five hundred rupees” and “one tho
 177.
 rupees” shall respectively be substituted.
 Insertion of 59. After section 177 of the principal Act, the following section shall be inserted,
-section 177A. namely:—
+section 177A. namely:-
 Penalty for “177A. Whoever contravenes the regulations made under section 118, shall be
 contravention punishable with fine which shall not be less than five hundred rupees, but may extend
 of regulations
@@ -1674,13 +1640,12 @@ under section
 Amendment 60. In section 178 of the principal Act, in sub-section (3), in clause (b), for the words
 of section “two hundred rupees”, the words “five hundred rupees” shall be substituted.
 178.
-Amendment 61. In section 179 of the principal Act,—
+Amendment 61. In section 179 of the principal Act,-
 of section
 179. (i) in sub-section (1), for the words "five hundred rupees", the words “two
 thousand rupees” shall be substituted;
 (ii) in sub-section (2), for the words "five hundred rupees", the words “two
 thousand rupees” shall be substituted.
-34
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 33
 62. In section 180 of the principal Act, for the words "which may extend to one thousand Amendment
@@ -1689,14 +1654,14 @@ rupees", the words “of five thousand rupees” shall be substituted. of sectio
 63. In section 181 of the principal Act, for the words "which may extend to five hundred Amendment
 rupees", the words “of five thousand rupees” shall be substituted. of section
 181.
-64. In section 182 of the principal Act,— Amendment
+64. In section 182 of the principal Act,- Amendment
 of section
 (i) in sub-section (1), for the words "which may extend to five hundred rupees", 182.
 the words “of ten thousand rupees” shall be substituted;
 (ii) in sub-section (2), for the words "one hundred rupees", the words
 “ten thousand rupees” shall be substituted.
 65. For section 182A of the principal Act, the following sections shall be substituted, Substitution of
-namely:— new section
+namely:- new section
 for section
 182A.
 “182A. (1) Whoever, being a manufacturer, importer or dealer of motor vehicles, Punishment
@@ -1733,20 +1698,19 @@ contravention
 thousand rupees.”.
 of section
 62A.
-66. In section 183 of the principal Act,— Amendment
+66. In section 183 of the principal Act,- Amendment
 of section
-(i) in sub-section (1),— 183.
+(i) in sub-section (1),- 183.
 (a) after the words “Whoever drives”, the words “or causes any person
 who is employed by him or subjects someone under his control to drive” shall be
 inserted;
 (b) for the words "with fine which extend to four hundred rupees, or, if
 having been previously convicted of an offence under this sub-section is again
-35
 1409070/2020/MVL Section
-34 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+34 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 convicted of an offence under this sub-section, with fine which may extend to
-one thousand rupees", the following shall be substituted, namely:—
-“in the following manner, namely:—
+one thousand rupees", the following shall be substituted, namely:-
+“in the following manner, namely:-
 (i) where such motor vehicle is a light motor vehicle with fine
 which shall not be less than one thousand rupees but may extend to
 two thousand rupees;
@@ -1762,7 +1726,7 @@ as per the provisions of the sub-section (4) of section 206.”.
 shall be inserted.
 (iv) in sub-section (4), for the word, brackets and figure “sub-section (2)”, the
 word, brackets and figure “sub-section (1)” shall be substituted.
-Amendment 67. In section 184 of the principal Act,—
+Amendment 67. In section 184 of the principal Act,-
 of section
 184. (i) after the words “dangerous to the public”, the words “or which causes a
 sense of alarm or distress to the occupants of the vehicle, other road users, and
@@ -1773,8 +1737,8 @@ less than six months or with fine which shall not be less than one thousand rupe
 may extend to five thousand rupees, or with both” shall be substituted;
 (iii) for the words “which may extend to two thousand rupees”, the words
 “of ten thousand rupees” shall be substituted;
-(iv) the following Explanation shall be inserted, namely:—
-“Explanation.—For the purpose of this section,—
+(iv) the following Explanation shall be inserted, namely:-
+“Explanation.-For the purpose of this section,-
 (a) jumping a red light;
 (b) violating a stop sign;
 (c) use of handheld communications devices while driving;
@@ -1785,11 +1749,10 @@ of a competent and careful driver and where it would be obvious to a
 competent and careful driver that driving in that manner would be
 dangerous,
 shall amount to driving in such manner which is dangerous to the public.”.
-Amendment 68. In section 185 of the principal Act,—
+Amendment 68. In section 185 of the principal Act,-
 of section
 185. (i) in clause (a), after the words “breath analyser,”, the words “or in any other
 test including a laboratory test,” shall be inserted;
-36
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 35
 (ii) for the words “which may extend to two thousand rupees”, the words
@@ -1799,7 +1762,7 @@ similar offence,” shall be omitted;
 (iv) for the words “which may extend to three thousand rupees”, the words
 “of fifteen thousand rupees” shall be substituted;
 (v) for the Explanation, the following Explanation shall be substituted, namely:–
-'Explanation.—For the purposes of this section, the expression “drug”
+'Explanation.-For the purposes of this section, the expression “drug”
 means any intoxicant other than alcohol, natural or synthetic, or any natural
 material or any salt, or preparation of such substance or material as may be
 notified by the Central Government under this Act and includes a narcotic drug
@@ -1809,7 +1772,7 @@ and psychotropic substance as defined in clause (xiv) and clause (xxiii) of
 hundred rupees”, the words “one thousand rupees” and “two thousand rupees” shall of section
 186.
 respectively be substituted.
-70. In section 187 of the principal Act,— Amendment
+70. In section 187 of the principal Act,- Amendment
 of section
 (i) for the brackets and letter “(c)” the brackets and letter “(a)” shall be 187.
 substituted;
@@ -1819,7 +1782,7 @@ substituted;
 (iv) for the words "six months", the words "one year" shall be substituted; and
 (v) for the words “which may extend to one thousand rupees”, the words “of ten
 thousand rupees” shall be substituted.
-71. In section 189 of the principal Act,— Amendment
+71. In section 189 of the principal Act,- Amendment
 of section
 (i) for the words “one month”, the words “three months” shall be substituted; 189.
 (ii) for the words “which may extend to five hundred rupees”, the words “of five
@@ -1827,9 +1790,9 @@ thousand rupees” shall be substituted;
 (iii) after the words "with both", the words, "and for a subsequent offence shall
 be punishable with imprisonment for a term which may extend to one year, or with fine
 of ten thousand rupees; or with both." shall be inserted.
-72. In section 190 of the principal Act,— Amendment
+72. In section 190 of the principal Act,- Amendment
 of section
-(i) in sub-section (1),—
+(i) in sub-section (1),-
 190.
 (a) for the words “which may extend to two hundred and fifty rupees”, the
 words “of one thousand five hundred rupees” shall be substituted;
@@ -1839,18 +1802,17 @@ words “of one thousand five hundred rupees” shall be substituted;
 shall be punishable with imprisonment for a term which may extend to six months,
 or with a fine of ten thousand rupees for bodily injury or damage to property”
 shall be inserted.
-(ii) in sub-section (2),—
+(ii) in sub-section (2),-
 (a) for the words “a fine of one thousand rupees”, the words “imprisonment
 for a term which may extend to three months, or with fine which may extend to
-37
 1409070/2020/MVL Section
-36 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+36 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 ten thousand rupees or with both and he shall be disqualified for holding licence
 for a period of three months” shall be substituted; and
 (b) for the words “a fine of two thousand rupees”, the words “imprisonment
 for a term which may extend to six months, or with fine which may extend to ten
 thousand rupees or with both” shall be substituted;
-(iii) in sub-section (3),—
+(iii) in sub-section (3),-
 (a) for the words “which may extend to three thousand rupees”, the words
 “with a fine of ten thousand rupees and he shall be disqualified for holding
 licence for a period of three months” shall be substituted; and
@@ -1859,12 +1821,12 @@ licence for a period of three months” shall be substituted; and
 Omission of 73. Section 191of the principal Act shall be omitted.
 section 191.
 Amendment 74. In section 192 of the principal Act, the following Explanation shall be inserted,
-of section namely:—
+of section namely:-
 192.
-“Explanation.—Use of a motor vehicle in contravention of the provisions of
+“Explanation.-Use of a motor vehicle in contravention of the provisions of
 section 56 shall be deemed to be a contravention of the provisions of section 39 and
 shall be punishable in the same manner as provided in sub-section (1).”.
-Amendment 75. In section 192A of the principal Act, in sub-section (1),—
+Amendment 75. In section 192A of the principal Act, in sub-section (1),-
 of section
 192A. (i) after the words “for the first offence with”, the words “imprisonment for a
 term which may extend to six months and” shall be inserted;
@@ -1876,7 +1838,7 @@ substituted;
 less than five thousand rupees”, the words “of ten thousand rupees” shall be
 substituted.
 Insertion of 76. After section 192A of the principal Act, the following section shall be inserted,
-new section namely:—
+new section namely:-
 192B.
 Offences “192B. (1) Whoever, being the owner of a motor vehicle, fails to make an
 relating to application for registration of such motor vehicle under sub-section (1) of section 41
@@ -1895,7 +1857,6 @@ registration shall be punishable with imprisonment for a term which shall not be
 than six months but may extend to one year and with fine equal to ten times the amount
 of the annual road tax or two-third the lifetime tax of the motor vehicle, whichever is
 higher.
-38
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 37
 (4) Whoever, being a dealer, obtains a certificate of registration for such vehicle
@@ -1905,18 +1866,18 @@ thereon are different from such number entered in the certificate of registratio
 punishable with imprisonment for a term which shall not be less than six months but
 may extend to one year and with fine equal to ten times the amount of annual road tax
 or two-third the lifetime tax of the motor vehicle, whichever is higher.”.
-77. In the principal Act,— Amendment
+77. In the principal Act,- Amendment
 of section
 (A) in section 193, in the marginal heading, for the words "agents and canvassers", 193.
 the words "agents, canvassers and aggregators" shall be substituted;
-(B) section 193 shall be numbered as sub-section (1) thereof, and—
-(i) in sub-section (1) as so numbered,-—
+(B) section 193 shall be numbered as sub-section (1) thereof, and-
+(i) in sub-section (1) as so numbered,--
 (a) for the words “which may extend to one thousand rupees”, the
 words “of one thousand rupees” shall be substituted;
 (b) for the words “which may extend to two thousand rupees”, the
 words “of two thousand rupees” shall be substituted;
 (ii) after sub-section (1) as so numbered, the following sub-sections shall
-be inserted, namely:—
+be inserted, namely:-
 “(2) Whoever engages himself as an aggregator in contravention of
 the provisions of section 93 or of any rules made thereunder shall be
 punishable with fine up to one lakh rupees but shall not be less than
@@ -1925,19 +1886,19 @@ twenty-five thousand rupees.
 condition of the licence granted under sub-section (1) of section 93, not
 designated by the State Government as a material condition, shall be
 punishable with fine of five thousand rupees.”.
-78. In section 194 of the principal Act,— Amendment
+78. In section 194 of the principal Act,- Amendment
 of section
-(i) in sub-section (1),— 194.
+(i) in sub-section (1),- 194.
 (a) the word “minimum” shall be omitted;
 (b) for the words “of two thousand rupees and an additional amount of
 one thousand rupees per tonne of excess load”, the words “of twenty thousand
 rupees and an additional amount of two thousand rupees per tonne of excess
 load” shall be substituted;
-(c) the following proviso shall be inserted, namely:—
+(c) the following proviso shall be inserted, namely:-
 “Provided that such motor vehicle shall not be allowed to move
 before such excess load is removed or is caused or allowed to be removed
 by the person in control of such motor vehicle.”;
-(ii) after sub-section (1), the following sub-section shall be inserted, namely:—
+(ii) after sub-section (1), the following sub-section shall be inserted, namely:-
 “(1A) Whoever drives a motor vehicle or causes or allows a motor vehicle
 to be driven when such motor vehicle is loaded in such a manner that the load or
 any part thereof or anything extends laterally beyond the side of the body or to
@@ -1946,9 +1907,8 @@ with a fine of twenty thousand rupees, together with the liability to pay charge
 for off-loading of such load:
 Provided that such motor vehicle shall not be allowed to move before
 such load is arranged in a manner such that there is no extension of the load
-39
 1409070/2020/MVL Section
-38 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+38 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 laterally beyond the side of the body or to the front or to the rear or in height
 beyond the permissible limit:
 Provided further that nothing in this sub-section shall apply when such
@@ -1958,7 +1918,7 @@ carriage of a particular load.";
 (iii) in sub-section (2), for the words, “which may extend to three thousand
 rupees”, the words “of forty thousand rupees” shall be substituted.
 Insertion of 79. After section 194 of the principal Act, the following sections shall be inserted,
-new sections namely:—
+new sections namely:-
 194A, 194B,
 194C, 194D,
 194E and
@@ -2005,12 +1965,11 @@ as may be specified by the State Government, shall be punishable with imprisonme
 emergency
 vehicles. for a term which may extend to six months, or with a fine of ten thousand rupees or with
 both.
-Use of horns 194F. Whoever—
+Use of horns 194F. Whoever-
 and silence
-zones. (a) while driving a motor vehicle—
+zones. (a) while driving a motor vehicle-
 (i) sounds the horn needlessly or continuously or more than
 necessary to ensure safety, or
-40
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 39
 (ii) sounds the horn in an area with a traffic sign prohibiting the use
@@ -2021,7 +1980,7 @@ shall be punishable with a fine of one thousand rupees and for a second or subse
 offence with a fine of two thousand rupees.”.
 80. Section 195 of the principal Act shall be omitted. Omission of
 section 195.
-81. In section 196 of the principal Act,— Amendment
+81. In section 196 of the principal Act,- Amendment
 of section
 (i) after the words “shall be punishable”, the words “for the first offence” shall 196.
 be inserted;
@@ -2030,7 +1989,7 @@ two thousand rupees,” shall be substituted; and
 (iii) after the words "with both", the words ", and for a subsequent offence shall
 be punishable with imprisonment for a term which may extend to three months, or with
 fine of four thousand rupees, or with both." shall be inserted.
-82. In section 197 of the principal Act,— Amendment
+82. In section 197 of the principal Act,- Amendment
 of section
 (i) in sub-section (1), for the words “which may extend to five hundred rupees”, 197.
 the words “of five thousand rupees” shall be substituted;
@@ -2040,7 +1999,7 @@ the words “of five thousand rupees” shall be substituted.
 one hundred rupees”, the words “with fine of one thousand rupees” shall be substituted. of section
 198.
 84. After section 198 of the principal act, the following section shall be inserted, Insertion of
-namely:— new section
+namely:- new section
 198A
 '198A. (1) Any designated authority, contractor, consultant or concessionaire Failure to
 responsible for the design or construction or maintenance of the safety standards of comply with
@@ -2056,14 +2015,13 @@ or contractor or concessionaire shall be punishable with a fine which may extend
 to one lakh rupees and the same shall be paid to the Fund constituted under
 section 164B.
 (3) For the purposes of sub-section (2), the court shall in particular have regard
-to the following matters, namely:—
+to the following matters, namely:-
 (a) the characteristics of the road, and the nature and type of traffic which
 was reasonably expected to use it as per the design of road;
 (b) the standard of maintenance norms applicable for a road of that character
 and use by such traffic;
-41
 1409070/2020/MVL Section
-40 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+40 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 (c) the state of repair in which road users would have expected to find the
 road;
 (d) whether the designated authority responsible for the maintenance of
@@ -2076,11 +2034,11 @@ before the cause of action arose;
 (f) whether adequate warning notices through road signs, of its condition
 had been displayed; and
 (g) such other matters as may be prescribed by the Central Government.
-Explanation.—For the purposes of this section, the term “contractor” shall
+Explanation.-For the purposes of this section, the term “contractor” shall
 include sub-contractors and all such persons who are responsible for any stage in the
 design, construction and maintenance of a stretch of road.’.
 Insertion of 85. After section 199 of the principal Act, the following sections shall be inserted,
-new sections namely:—
+new sections namely:-
 199A and
 199B.
 Offences by “199A. (1) Where an offence under this Act has been committed by a juvenile,
@@ -2091,7 +2049,7 @@ Provided that nothing in this sub-section shall render such guardian or owner
 liable to any punishment provided in this Act, if he proves that the offence was
 committed without his knowledge or that he exercised all due diligence to prevent the
 commission of such offence.
-Explanation.—For the purposes of this section, the Court shall presume that
+Explanation.-For the purposes of this section, the Court shall presume that
 the use of the motor vehicle by the juvenile was with the consent of the guardian of
 such juvenile or the owner of the motor vehicle, as the case may be.
 (2) In addition to the penalty under sub-section (1), such guardian or owner
@@ -2112,16 +2070,15 @@ juvenile has attained the age of twenty-five years.
 such juvenile shall be punishable with such fines as provided in the Act while any
 custodial sentence may be modified as per the provisions of the Juvenile Justice
 Act, 2000. 56 of 2000.
-42
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 41
 199B. The fines as provided in this Act shall be increased by such amount not Revision of
 exceeding ten per cent. in value of the existing fines, on an annual basis on 1st day of fines.
 April of each year from the date of commencement of the Motor Vehicles (Amendment)
 Act, 2019, as may be notified by the Central Government.”.
-86. In section 200 of the principal Act,— Amendment
+86. In section 200 of the principal Act,- Amendment
 of section
-(i) in sub-section (1),— 200.
+(i) in sub-section (1),- 200.
 (a) for the words, figures and brackets “punishable under section 177,
 section 178, section 179, section 180, section 181, section 182, sub-section (1) or
 sub-section (2) of section 183, section 184, section 186, section 189, sub-section
@@ -2134,10 +2091,10 @@ communication devices, section 186, section 189, sub-section (2) of section 190,
 section 192, section 192A, section 194, section 194A, section 194B, section
 194C, section 194D, section 194E, section 194F, section 196, section 198,” shall
 be substituted;
-(b) the following proviso shall be inserted, namely:—
+(b) the following proviso shall be inserted, namely:-
 "Provided that the State Government may, in addition to such
 amount, require the offender to undertake a period of community service.";
-(ii) after sub-section (2), the following provisos shall be inserted, namely:—
+(ii) after sub-section (2), the following provisos shall be inserted, namely:-
 “Provided that notwithstanding compounding under this section, such
 offence shall be deemed to be a previous commission of the same offence for the
 purpose of determining whether a subsequent offence has been committed:
@@ -2145,9 +2102,9 @@ Provided further that compounding of an offence will not discharge the
 offender from proceedings under sub-section (4) of section 206 or the obligation
 to complete a driver refresher training course, or the obligation to complete
 community service, if applicable.”.
-87. In section 201 of the principal Act,— Amendment
+87. In section 201 of the principal Act,- Amendment
 of section
-(i) in sub-section (1),— 201.
+(i) in sub-section (1),- 201.
 (a) the word “disabled” shall be omitted;
 (b) for the words “fifty rupees per hour”, the words “five hundred rupees”
 shall be substituted;
@@ -2156,18 +2113,17 @@ charges”, the words “an agency authorised by the Central Government or State
 Government, removal charges” shall be substituted;
 (ii) in sub-section (2), for the words “towing charges”, the words “removal
 charges” shall be substituted;
-(iii) after sub-section (2), the following sub-section shall be inserted, namely:—
+(iii) after sub-section (2), the following sub-section shall be inserted, namely:-
 “(3) sub-section (1) shall not apply where the motor vehicle has suffered
 an unforeseen breakdown and is in the process of being removed.";
-(iv) after sub-section (3), the following Explanation shall be inserted, namely:—
-'Explanation.—For the purposes of this section, “removal charges”
+(iv) after sub-section (3), the following Explanation shall be inserted, namely:-
+'Explanation.-For the purposes of this section, “removal charges”
 includes any costs involved in the removal of the motor vehicle from one location
 to another and also includes any costs related to storage of such motor vehicle.'.
-43
 1409070/2020/MVL Section
-42 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+42 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 Amendment 88. In section 206 of the principal Act, after sub-section (3), the following sub-section
-of section shall be inserted, namely:—
+of section shall be inserted, namely:-
 206.
 “(4) A police officer or other person authorised in this behalf by the State
 Government shall, if he has reason to believe that the driver of a motor vehicle has
@@ -2178,7 +2134,7 @@ Provided that the person seizing the licence shall give to the person surrenderi
 the licence a temporary acknowledgement therefor, but such acknowledgement shall
 not authorise the holder to drive until the licence has been returned to him.”.
 Insertion of 89. After section 210 of the principal Act, the following sections shall be inserted,
-new sections namely:—
+new sections namely:-
 210A, 210B,
 210C and
 210D.
@@ -2196,7 +2152,7 @@ committed by
 penalty corresponding to that offence under this Act.
 an enforcing
 authority.
-Power of 210C. The Central Government may make rules for—
+Power of 210C. The Central Government may make rules for-
 Central
 Government (a) design, construction and maintenance standards for National highways;
 to make rules.
@@ -2209,10 +2165,10 @@ Government maintenance standards for roads other than national highways, and for
 to make rules.
 matter which is, or may be, prescribed by the State Government.”.
 Insertion of 90. After section 211 of the principal Act, the following section shall be inserted,
-new section namely:—
+new section namely:-
 211A.
 Use of “211A. (1) Where any provision of this Act or the rules and regulations made
-electronic thereunder provide for—
+electronic thereunder provide for-
 forms and
 documents. (a) the filing of any form, application or any other document with any
 office, authority, body or agency owned or controlled by the Central Government
@@ -2224,24 +2180,23 @@ then notwithstanding anything contained in such provision, such requirement shal
 be deemed to have been satisfied if such filing, issue, grant, receipt or payment, as the
 case may be, is effected by means of such electronic form as may be prescribed by the
 Central Government or the State Government, as the case may be.
-44
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 43
 (2) The Central Government or the State Government shall, for the purpose of
-sub-section (1), prescribe—
+sub-section (1), prescribe-
 (a) the manner and format in which such electronic forms and documents
 shall be filed, created or issued; and
 (b) the manner or method of payment of any fee or charges for filing,
 creation or issue of any electronic document under clause (a).”.
-91. In section 212 of the principal Act,— Amendment
+91. In section 212 of the principal Act,- Amendment
 of section
-(i) in sub-section (4),— 212.
+(i) in sub-section (4),- 212.
 (a) after the words, brackets and figures “the proviso to sub-section (1) of
 section 112”, the word and figures “section 118" shall be inserted;
 (b) after the words, brackets, figures and letter “sub-section (4) of
 section 163A”, the words, figures and letter “section 164, section 177A” shall be
 inserted;
-(ii) after sub-section (4), the following sub-section shall be inserted, namely:—
+(ii) after sub-section (4), the following sub-section shall be inserted, namely:-
 “(5) Every notification issued by the State Government under
 section 210A shall be laid, as soon as may be after it is made, before each House
 of the State Legislature where it consists of two Houses, or where such Legislature
@@ -2256,11 +2211,11 @@ modified form or be of no effect as the case may be; so, however, that any such
 modification or annulment shall be without prejudice to the validity of anything
 previously done under that notification.”.
 92. After section 215 of the principal Act, the following sections shall be inserted, Insertion of
-namely:— new sections
+namely:- new sections
 215A, 215B,
 215C and
 215D.
-“215A. Notwithstanding anything contained in this Act,— Power of
+“215A. Notwithstanding anything contained in this Act,- Power of
 Central
 (a) the Central Government shall have the power to delegate any power or Government
 functions that have been conferred upon it by the Act to any public servant or and State
@@ -2278,10 +2233,9 @@ necessary and on such terms and conditions as may be prescribed by the Central
 Government.
 (2) The National Board shall render advice to the Central Government or State
 Government, as the case may be, on all aspects pertaining to road safety and traffic
-management including, but not limited to,—
-45
+management including, but not limited to,-
 1409070/2020/MVL Section
-44 THE GAZETTE OF INDIA EXTRAORDINARY [PART II—
+44 THE GAZETTE OF INDIA EXTRAORDINARY [PART II-
 (a) the standards of design, weight, construction, manufacturing process,
 operation and maintenance of motor vehicles and of safety equipment;
 (b) the registration and licensing of motor vehicles;
@@ -2299,7 +2253,7 @@ Power of 215C. (1) The Central Government may make rules for the purposes of car
 Central into effect the provisions of this Chapter.
 Government
 to make rules. (2) Without prejudice to the generality of the foregoing power, such rules may
-provide for—
+provide for-
 (a) the use of electronic forms and means for the filing of documents, issue
 or grant of licence, permit, sanction, approval or endorsements and the receipt or
 payment of money as referred to in section 211A;
@@ -2316,7 +2270,7 @@ Power of State 215D. (1) The State Government may make rules for the purposes of
 Government effect, the provisions of this Chapter, other than the matters specified in section 215C.
 to make rules.
 (2) Without prejudice to the generality of the foregoing power, such rules may
-provide for—
+provide for-
 (a) the use of electronic forms and means for the filing of documents, issue
 or grant of licence, permit, sanction, approval or endorsements and the receipt or
 payment of money as referred to in section 211A;
@@ -2327,7 +2281,6 @@ exercise of such powers, the uniform to be worn by them, the authorities to
 which they shall be subordinate as referred to in sub-section (3) of section 213;
 (c) such other powers as may be exercised by officers of the Motor Vehicles
 Department as referred to in clause (f) of sub-section (5) of section 213; and
-46
 1409070/2020/MVL Section
 SEC. 1] THE GAZETTE OF INDIA EXTRAORDINARY 45
 (d) any other matter which is to be, or may be, prescribed, or in respect of
@@ -2335,9 +2288,9 @@ which provision is to be made by rules by the State Government.”.
 93. In the principal Act, the Second Schedule shall be omitted. Omission of
 Second
 Schedule.
-————
+----
 DR. G. NARAYANA RAJU,
 Secretary to the Govt. of India.
 UPLOADED BY THE MANAGER, GOVERNMENT OF INDIA PRESS, MINTO ROAD, NEW DELHI–110002
 AND PUBLISHED BY THE CONTROLLER OF PUBLICATIONS, DELHI–110054.
-MGIPMRND—2599GI(S3)—09-08-2019.
+MGIPMRND-2599GI(S3)-09-08-2019.
