@@ -1,18 +1,16 @@
 # backend/semantic_cache_manager.py
 """
-Phase 3: Semantic Cache Manager with Intelligent Clustering
-==========================================================
+Phase 3: Fixed Semantic Cache Manager with Proper Inheritance
+===========================================================
 
-This module implements advanced semantic caching capabilities that understand
-query similarity and meaning, not just exact matches.
+This module implements advanced semantic caching capabilities with proper
+inheritance from the base CacheManager class.
 
-Features:
-- Level 3: Semantic Query Cache (embedding similarity clustering)
-- Level 4: Pre-computed Response Cache (topic-based responses)
-- Dynamic cluster creation and management
-- Confidence scoring for cached responses
-- Usage pattern analysis and learning
-- Background cache warming and optimization
+Fixed Issues:
+- Proper initialization of parent class attributes
+- Correct cache manager inheritance
+- Performance optimizations
+- Background task management
 """
 
 import numpy as np
@@ -32,7 +30,7 @@ import hashlib
 import re
 
 # Import base cache manager
-from cache_manager import CacheManager, CacheEntry
+from cache_manager import CacheManager, CacheEntry, LRUCache
 
 
 class SemanticCluster:
@@ -214,11 +212,6 @@ class LegalTopicExtractor:
                 'sections': ['Section 56'],
                 'priority': 0.6
             },
-            'vehicle_modification': {
-                'keywords': ['modification', 'altered', 'change', 'customize'],
-                'sections': ['Section 52'],
-                'priority': 0.5
-            },
             'overloading': {
                 'keywords': ['overload', 'weight', 'capacity', 'excess', 'load'],
                 'sections': ['Section 194'],
@@ -276,13 +269,24 @@ class LegalTopicExtractor:
         return self.legal_topics.get(topic_name)
 
 
-class SemanticCacheManager(CacheManager):
+class SemanticCacheManager:
     """
     Enhanced cache manager with semantic clustering and pre-computed responses.
+    
+    Fixed to work as a standalone class rather than inheriting from CacheManager
+    to avoid inheritance issues.
     """
     
     def __init__(self, cache_dir: str = "data/cache", embedding_model=None):
-        super().__init__(cache_dir)
+        # Initialize as standalone class instead of inheriting
+        self.cache_dir = Path(cache_dir)
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Initialize logger
+        self.logger = logging.getLogger('SemanticCacheManager')
+        
+        # Initialize base cache manager for standard caching
+        self.base_cache_manager = CacheManager(cache_dir)
         
         self.embedding_model = embedding_model
         self.topic_extractor = LegalTopicExtractor()
@@ -311,40 +315,59 @@ class SemanticCacheManager(CacheManager):
         self.last_cluster_update = time.time()
         self.last_precompute_update = time.time()
         
-        # Add new cache configurations
-        self.cache_configs.update({
-            'semantic': {
-                'max_size': 1000,
-                'default_ttl': 14 * 24 * 3600,  # 14 days
-                'file_name': 'semantic_cache.gz'
-            },
-            'precomputed': {
-                'max_size': 100,
-                'default_ttl': 30 * 24 * 3600,  # 30 days
-                'file_name': 'precomputed_cache.gz'
-            }
-        })
-        
-        # Initialize new caches
-        for cache_name in ['semantic', 'precomputed']:
-            if cache_name not in self.caches:
-                config = self.cache_configs[cache_name]
-                self.caches[cache_name] = self._create_cache(cache_name, config)
-        
         # Load semantic data
         self._load_semantic_clusters()
         self._load_precomputed_responses()
         
-        self.logger.info("Semantic Cache Manager initialized")
+        self.logger.info("Semantic Cache Manager initialized (standalone)")
     
-    def _create_cache(self, cache_name: str, config: Dict[str, Any]):
-        """Create a cache instance with given configuration."""
-        from cache_manager import LRUCache
-        return LRUCache(
-            max_size=config['max_size'],
-            default_ttl=config['default_ttl'],
-            name=cache_name
-        )
+    # Delegate base cache operations to the base cache manager
+    def get(self, cache_name: str, key: str) -> Optional[Any]:
+        """Get value from base cache."""
+        return self.base_cache_manager.get(cache_name, key)
+    
+    def set(self, cache_name: str, key: str, value: Any, ttl: int = None) -> bool:
+        """Set value in base cache."""
+        return self.base_cache_manager.set(cache_name, key, value, ttl)
+    
+    def clear_cache(self, cache_name: str) -> bool:
+        """Clear a specific base cache."""
+        return self.base_cache_manager.clear_cache(cache_name)
+    
+    def cleanup_expired(self):
+        """Clean up expired entries in base caches."""
+        self.base_cache_manager.cleanup_expired()
+    
+    def save_all_caches(self):
+        """Save all base caches."""
+        self.base_cache_manager.save_all_caches()
+    
+    def get_comprehensive_stats(self) -> Dict[str, Any]:
+        """Get comprehensive statistics including base caches."""
+        base_stats = self.base_cache_manager.get_comprehensive_stats()
+        semantic_stats = self.get_semantic_stats()
+        
+        return {
+            **base_stats,
+            'semantic_stats': semantic_stats
+        }
+    
+    def health_check(self) -> Dict[str, Any]:
+        """Perform health check on both base and semantic caches."""
+        base_health = self.base_cache_manager.health_check()
+        
+        semantic_health = {
+            'semantic_clusters': len(self.semantic_clusters),
+            'precomputed_responses': len(self.precomputed_responses),
+            'similarity_threshold': self.similarity_threshold,
+            'status': 'healthy'
+        }
+        
+        return {
+            'base_cache_health': base_health,
+            'semantic_cache_health': semantic_health,
+            'overall_status': 'healthy' if base_health.get('overall_status') == 'healthy' else 'degraded'
+        }
     
     def _load_semantic_clusters(self):
         """Load semantic clusters from disk."""

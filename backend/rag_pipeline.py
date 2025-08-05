@@ -135,6 +135,7 @@ class IntelligentRAGPipeline:
         
         # Initialize cache managers
         self.cache_manager = get_cache_manager(self.config['cache_dir'])
+        
         self.semantic_cache_manager = None  # Will be initialized after embedding model
         self.background_manager = None
         
@@ -449,7 +450,8 @@ class IntelligentRAGPipeline:
         """Initialize Phase 3 semantic caching features."""
         print("🧠 Initializing semantic cache system...")
         
-        # Initialize semantic cache manager with embedding model
+        # Initialize semantic cache manager (standalone instead of inherited)
+        from semantic_cache_manager import SemanticCacheManager
         self.semantic_cache_manager = SemanticCacheManager(
             cache_dir=self.config['cache_dir'],
             embedding_model=self.embedding_model
@@ -1290,8 +1292,13 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
         if total_queries > 0:
             cache_hit_rate = (self.pipeline_stats['total_cache_hits'] / total_queries * 100)
         
-        # Get cache manager statistics
-        cache_stats = self.cache_manager.get_comprehensive_stats()
+        # Get cache manager statistics from the base cache manager
+        cache_stats = {}
+        if self.semantic_cache_manager:
+            cache_stats = self.semantic_cache_manager.get_comprehensive_stats()
+        else:
+            # Fallback to direct cache manager if semantic cache not available
+            cache_stats = self.cache_manager.get_comprehensive_stats()
         
         # Get semantic cache statistics (Phase 3)
         semantic_stats = {}
@@ -1364,15 +1371,11 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
         }
         
         # Check standard cache system
-        cache_health = self.cache_manager.health_check()
-        health_status['checks']['cache_manager'] = cache_health
-        
-        # Check semantic cache system (Phase 3)
         if self.semantic_cache_manager:
-            semantic_health = self.semantic_cache_manager.health_check()
-            health_status['checks']['semantic_cache_manager'] = semantic_health
+            cache_health = self.semantic_cache_manager.health_check()
+            health_status['checks']['cache_manager'] = cache_health
             
-            if semantic_health['overall_status'] != 'healthy':
+            if cache_health.get('overall_status') != 'healthy':
                 health_status['overall_status'] = 'degraded'
         
         # Check background processing
@@ -1381,9 +1384,9 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
                 'status': 'ok' if self.background_manager.tasks_enabled else 'disabled'
             }
         
-        if any(check['status'] in ['error', 'unhealthy'] for check in health_status['checks'].values()):
+        if any(check.get('status') in ['error', 'unhealthy'] for check in health_status['checks'].values()):
             health_status['overall_status'] = 'unhealthy'
-        elif any(check['status'] in ['warning', 'degraded'] for check in health_status['checks'].values()):
+        elif any(check.get('status') in ['warning', 'degraded'] for check in health_status['checks'].values()):
             health_status['overall_status'] = 'degraded'
         
         return health_status
@@ -1394,25 +1397,30 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
             self.faq_cache.clear()
             return True
         elif cache_level in ['exact_query', 'embedding', 'retrieval']:
-            return self.cache_manager.clear_cache(cache_level)
+            if self.semantic_cache_manager:
+                return self.semantic_cache_manager.clear_cache(cache_level)
+            else:
+                return self.cache_manager.clear_cache(cache_level)
         elif cache_level in ['semantic', 'precomputed', 'patterns']:
             if self.semantic_cache_manager:
                 self.semantic_cache_manager.clear_semantic_data(cache_level)
                 return True
         elif cache_level == 'all':
             self.faq_cache.clear()
-            self.cache_manager.clear_all_caches()
             if self.semantic_cache_manager:
+                self.semantic_cache_manager.base_cache_manager.clear_all_caches()
                 self.semantic_cache_manager.clear_semantic_data('all')
+            else:
+                self.cache_manager.clear_all_caches()
             return True
         return False
     
     def save_caches(self):
         """Save all caches to disk."""
-        self.cache_manager.save_all_caches()
-        
         if self.semantic_cache_manager:
             self.semantic_cache_manager.save_all_semantic_data()
+        else:
+            self.cache_manager.save_all_caches()
         
         # Save FAQ cache
         paths = self._get_storage_paths()
