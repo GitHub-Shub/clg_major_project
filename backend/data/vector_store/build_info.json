@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "build_timestamp": "2025-08-06T00:26:40.584043",
+  "document_hash": "974ef98150ccd9063e36e1924f993de8afbf3da0b78e47439e115015b5772b61",
+  "document_path": "data/output/mv_act_cleaned.txt",
+  "total_chunks": 2921,
+  "embedding_model": "all-MiniLM-L6-v2",
+  "embedding_dimensions": 384,
+  "chunk_size": 600,
+  "chunk_overlap": 100,
+  "legal_sections": 306,
+  "tables_preserved": 0
+}
