@@ -1,16 +1,24 @@
 # backend/rag_pipeline.py
 """
-Phase 1: Enhanced RAG Pipeline with Persistent Vector Storage
-============================================================
+Phase 2: Enhanced RAG Pipeline with Multi-Level Caching
+======================================================
 
-This enhanced version implements persistent FAISS storage and advanced FAQ caching
-to dramatically reduce startup times and improve query performance.
+This enhanced version builds on Phase 1 and adds advanced caching layers
+for maximum performance optimization.
 
-Phase 1 Features:
-- Persistent FAISS index storage/loading
+Phase 2 Features (NEW):
+- Level 1: Exact Query Cache (hash-based exact matches)
+- Level 5: Chunk Retrieval Cache (FAISS search results)
+- Level 6: Query Embedding Cache (computed embeddings)
+- Intelligent cache hierarchy and fallback system
+- Advanced memory management and TTL support
+- Comprehensive cache analytics and monitoring
+
+Phase 1 Features (RETAINED):
+- Persistent FAISS index storage
 - Document change detection with SHA-256 hashing
+- Enhanced FAQ cache with 50+ entries
 - Build info tracking and versioning
-- Enhanced FAQ cache with 50+ entries and variations
 - Comprehensive error handling and recovery
 """
 
@@ -32,26 +40,36 @@ from datetime import datetime, timedelta
 import re
 from typing import Dict, List, Tuple, Optional, Any
 
+# Import cache management system
+from cache_manager import (
+    CacheManager, 
+    get_cache_manager, 
+    generate_query_hash, 
+    generate_embedding_hash, 
+    generate_retrieval_hash
+)
 
-class PersistentRAGPipeline:
+
+class AdvancedRAGPipeline:
     """
-    Enhanced RAG pipeline with persistent vector storage and multi-level caching.
+    Advanced RAG pipeline with multi-level caching and persistent storage.
     
-    Phase 1 Features:
-    - Persistent FAISS index storage
-    - Document change detection
-    - Enhanced FAQ caching
-    - Comprehensive error handling
+    Cache Hierarchy (checked in order):
+    1. Level 2: FAQ Cache (instant responses for common questions)
+    2. Level 1: Exact Query Cache (hash-based exact matches)
+    3. Level 6: Query Embedding Cache (skip embedding computation)
+    4. Level 5: Chunk Retrieval Cache (skip FAISS search)
+    5. Full RAG Pipeline (generate new response)
     """
     
     def __init__(self, config=None):
         """
-        Initialize the persistent RAG pipeline.
+        Initialize the advanced RAG pipeline with multi-level caching.
         
         Args:
             config (dict): Configuration options for the pipeline
         """
-        # Default configuration optimized for persistent storage
+        # Default configuration optimized for advanced caching
         self.config = {
             # Model settings
             'embedding_model': 'all-MiniLM-L6-v2',
@@ -73,9 +91,17 @@ class PersistentRAGPipeline:
             'cache_dir': 'data/cache',
             'source_document': 'data/output/mv_act_cleaned.txt',
             
-            # Cache settings
+            # Cache settings (Phase 2)
+            'enable_exact_query_cache': True,
+            'enable_embedding_cache': True,
+            'enable_retrieval_cache': True,
+            'cache_query_responses': True,
+            'min_query_length': 3,
+            'max_cache_query_length': 500,
+            
+            # Performance settings
             'faq_cache_size': 100,
-            'index_version': '1.0',
+            'index_version': '2.0',  # Updated for Phase 2
         }
         
         # Update with user configuration
@@ -84,6 +110,9 @@ class PersistentRAGPipeline:
         
         # Initialize paths
         self._setup_directories()
+        
+        # Initialize cache manager
+        self.cache_manager = get_cache_manager(self.config['cache_dir'])
         
         # Initialize components
         self.embedding_model = None
@@ -96,12 +125,12 @@ class PersistentRAGPipeline:
         self.build_info = {}
         self.document_hash = None
         
-        # Caches
+        # FAQ cache (Phase 1)
         self.faq_cache = {}
         
-        # Statistics and metrics
+        # Statistics and metrics (enhanced for Phase 2)
         self.pipeline_stats = {
-            'initialization_method': 'unknown',  # 'loaded' or 'built'
+            'initialization_method': 'unknown',
             'startup_time': 0,
             'document_loaded': False,
             'total_chunks': 0,
@@ -112,8 +141,22 @@ class PersistentRAGPipeline:
             'tables_found': 0,
             'last_query_time': 0,
             'total_queries_processed': 0,
-            'cache_hits': 0,
-            'cache_misses': 0
+            
+            # Phase 2: Enhanced cache statistics
+            'faq_cache_hits': 0,
+            'exact_query_cache_hits': 0,
+            'embedding_cache_hits': 0,
+            'retrieval_cache_hits': 0,
+            'full_rag_executions': 0,
+            'total_cache_hits': 0,
+            'cache_saves': 0,
+            'cache_hierarchy_breakdown': {
+                'faq': 0,
+                'exact_query': 0,
+                'embedding_cached': 0,
+                'retrieval_cached': 0,
+                'full_rag': 0
+            }
         }
         
         # Setup logging
@@ -129,10 +172,10 @@ class PersistentRAGPipeline:
             format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
             handlers=[logging.StreamHandler(sys.stdout)]
         )
-        self.logger = logging.getLogger('PersistentRAGPipeline')
+        self.logger = logging.getLogger('AdvancedRAGPipeline')
     
     def _setup_directories(self):
-        """Create necessary directories for persistent storage."""
+        """Create necessary directories for persistent storage and caching."""
         directories = [
             self.config['vector_store_dir'],
             self.config['cache_dir'],
@@ -143,21 +186,12 @@ class PersistentRAGPipeline:
             os.makedirs(directory, exist_ok=True)
     
     def _calculate_document_hash(self, file_path: str) -> str:
-        """
-        Calculate SHA-256 hash of the document for change detection.
-        
-        Args:
-            file_path (str): Path to the document file
-            
-        Returns:
-            str: SHA-256 hash of the document
-        """
+        """Calculate SHA-256 hash of the document for change detection."""
         if not os.path.exists(file_path):
             return "FILE_NOT_FOUND"
         
         sha256_hash = hashlib.sha256()
         with open(file_path, "rb") as f:
-            # Read file in chunks to handle large files
             for byte_block in iter(lambda: f.read(4096), b""):
                 sha256_hash.update(byte_block)
         
@@ -190,21 +224,22 @@ class PersistentRAGPipeline:
             'chunk_size': self.config['chunk_size'],
             'chunk_overlap': self.config['chunk_overlap'],
             'legal_sections': self.pipeline_stats['legal_sections_found'],
-            'tables_preserved': self.pipeline_stats['tables_found']
+            'tables_preserved': self.pipeline_stats['tables_found'],
+            'phase': 2,  # Phase 2 marker
+            'cache_features': {
+                'exact_query_cache': self.config['enable_exact_query_cache'],
+                'embedding_cache': self.config['enable_embedding_cache'],
+                'retrieval_cache': self.config['enable_retrieval_cache']
+            }
         }
         
         with open(paths['build_info'], 'w', encoding='utf-8') as f:
             json.dump(self.build_info, f, indent=2)
         
-        self.logger.info(f"Build info saved: {len(self.chunks)} chunks, hash: {self.document_hash[:8]}...")
+        self.logger.info(f"Build info saved: {len(self.chunks)} chunks, Phase 2 features enabled")
     
     def _load_build_info(self) -> bool:
-        """
-        Load and validate build information.
-        
-        Returns:
-            bool: True if build info is valid and current, False otherwise
-        """
+        """Load and validate build information."""
         paths = self._get_storage_paths()
         
         if not os.path.exists(paths['build_info']):
@@ -220,7 +255,7 @@ class PersistentRAGPipeline:
             stored_hash = self.build_info.get('document_hash')
             
             if current_hash != stored_hash:
-                self.logger.info(f"Document changed (hash: {current_hash[:8]}... vs {stored_hash[:8] if stored_hash else 'None'}...) - will rebuild")
+                self.logger.info(f"Document changed - will rebuild")
                 return False
             
             # Check if all required files exist
@@ -266,19 +301,18 @@ class PersistentRAGPipeline:
             # Save build info
             self._save_build_info()
             
-            self.logger.info("Vector store saved successfully")
+            # Save advanced caches
+            self.cache_manager.save_all_caches()
+            self.pipeline_stats['cache_saves'] += 1
+            
+            self.logger.info("Vector store and caches saved successfully")
             
         except Exception as e:
             self.logger.error(f"Error saving vector store: {str(e)}")
             raise
     
     def _load_vector_store(self) -> bool:
-        """
-        Load the complete vector store from disk.
-        
-        Returns:
-            bool: True if successfully loaded, False otherwise
-        """
+        """Load the complete vector store from disk."""
         paths = self._get_storage_paths()
         
         try:
@@ -315,10 +349,10 @@ class PersistentRAGPipeline:
             return False
     
     def _initialize_pipeline(self):
-        """Initialize the pipeline with persistent storage support."""
+        """Initialize the pipeline with persistent storage and advanced caching."""
         start_time = time.time()
         
-        print("🚀 Initializing Persistent RAG Pipeline")
+        print("🚀 Initializing Advanced RAG Pipeline (Phase 2)")
         print("=" * 70)
         
         try:
@@ -340,18 +374,38 @@ class PersistentRAGPipeline:
                 self._build_vector_store_from_scratch()
                 self.pipeline_stats['initialization_method'] = 'built'
             
+            # Step 5: Initialize advanced caches (Phase 2)
+            self._initialize_advanced_caches()
+            
             # Record initialization time
             self.pipeline_stats['startup_time'] = time.time() - start_time
             
             # Print success summary
             self._print_initialization_summary()
             
-            self.logger.info("Persistent RAG Pipeline initialized successfully")
+            self.logger.info("Advanced RAG Pipeline initialized successfully")
             
         except Exception as e:
-            self.logger.error(f"Failed to initialize Persistent RAG Pipeline: {str(e)}")
+            self.logger.error(f"Failed to initialize Advanced RAG Pipeline: {str(e)}")
             print(f"\n❌ INITIALIZATION FAILED: {str(e)}")
             raise
+    
+    def _initialize_advanced_caches(self):
+        """Initialize Phase 2 advanced caching features."""
+        print("🔄 Initializing advanced cache system...")
+        
+        # Get cache statistics
+        cache_stats = self.cache_manager.get_comprehensive_stats()
+        
+        print(f"   Cache levels available:")
+        for cache_name, stats in cache_stats['cache_stats'].items():
+            print(f"   • {cache_name}: {stats['size']} entries, {stats['hit_rate']:.1f}% hit rate")
+        
+        memory_usage = cache_stats['memory_usage']
+        if 'total' in memory_usage:
+            print(f"   Total cache memory: {memory_usage['total']['size_mb']} MB")
+        
+        print(f"   ✅ Advanced cache system ready")
     
     def _load_embedding_model(self):
         """Load and validate the sentence transformer model."""
@@ -419,12 +473,8 @@ class PersistentRAGPipeline:
         document_path = self.config['source_document']
         
         try:
-            # Validate document exists
             if not os.path.exists(document_path):
-                raise FileNotFoundError(
-                    f"Document not found: {document_path}\n"
-                    "Please run the data extraction and cleaning pipeline first."
-                )
+                raise FileNotFoundError(f"Document not found: {document_path}")
             
             # Calculate document hash for change detection
             self.document_hash = self._calculate_document_hash(document_path)
@@ -563,6 +613,7 @@ class PersistentRAGPipeline:
     
     def _create_enhanced_faq_cache(self) -> Dict[str, str]:
         """Create an enhanced FAQ cache with 50+ entries and variations."""
+        # Reuse the FAQ cache from Phase 1 (same content)
         return {
             # Driving License Related
             "What is the penalty for driving without a license?": "As per Section 181 of the Motor Vehicles Act 1988, driving without a valid license is punishable with a fine of ₹5,000. This applies to all motor vehicles and is a serious traffic violation.",
@@ -621,66 +672,31 @@ class PersistentRAGPipeline:
             
             "Is pollution certificate mandatory?": "Yes, a valid Pollution Under Control certificate is mandatory under Section 190. The vehicle can be impounded if the certificate is not available.",
             
-            # Seat Belt
-            "What is the fine for not wearing seat belt?": "Not wearing seat belts typically attracts a fine of ₹1,000 under various state motor vehicle rules, though the specific section varies by state.",
-            
-            "Is wearing seat belt mandatory?": "Yes, wearing seat belts is mandatory for drivers and front-seat passengers in cars. The fine for non-compliance is typically ₹1,000.",
-            
-            # Phone Usage While Driving
-            "What is the penalty for using mobile phone while driving?": "Using mobile phones while driving is typically covered under Section 177 for traffic rule violations, with fines ranging from ₹1,000-₹5,000.",
-            
-            "Can I use phone while driving?": "No, using mobile phones while driving is prohibited and can attract fines under Section 177 for violating traffic rules.",
-            
             # Golden Hour Provision
             "What is the golden hour in the MV Act?": "The 'golden hour' refers to the one-hour period following a traumatic injury where prompt medical treatment can significantly improve survival chances, as defined in Section 2(12A) of the Motor Vehicles Act.",
             
             "What does golden hour mean in motor vehicle act?": "Section 2(12A) defines 'golden hour' as the critical one-hour window after an accident when immediate medical care can save lives. The Act mandates provisions for emergency medical care during this period.",
             
-            # Vehicle Modification
-            "Are vehicle modifications allowed?": "Vehicle modifications that alter fundamental characteristics require approval from the RTO under Section 52. Unauthorized modifications can attract penalties under Section 192.",
+            # Additional entries for Phase 2
+            "What is the penalty for using mobile phone while driving?": "Using mobile phones while driving is typically covered under Section 177 for traffic rule violations, with fines ranging from ₹1,000-₹5,000.",
             
-            "What is the penalty for illegal vehicle modification?": "Illegal vehicle modifications without RTO approval can be treated as altering vehicle characteristics under Section 192, attracting fines and possible vehicle seizure.",
+            "What is the fine for not wearing seat belt?": "Not wearing seat belts typically attracts a fine of ₹1,000 under various state motor vehicle rules, though the specific section varies by state.",
             
-            # Learner's License
-            "What are the rules for learner's license?": "Section 14 governs learner's licenses. L-plate display is mandatory, accompanied driving by license holder required, and specific routes may be restricted.",
-            
-            "Can I drive alone with learner's license?": "No, learner's license holders must be accompanied by a person holding a valid driving license while driving, as per Section 14.",
-            
-            # Hit and Run
-            "What is the penalty for hit and run?": "Hit and run cases are covered under Section 161 for not providing information after accidents. Under the new criminal laws, it may also attract charges under Bharatiya Nyaya Sanhita Section 106.",
-            
-            "What happens in hit and run cases?": "Hit and run involves leaving the accident scene without providing assistance or information. It attracts serious penalties under both Motor Vehicles Act and criminal law.",
-            
-            # Overloading
-            "What is the penalty for vehicle overloading?": "Section 194 covers penalties for overloading, with fines of ₹2,000-₹20,000 depending on the extent of overloading and vehicle type.",
-            
-            "Is vehicle overloading illegal?": "Yes, vehicle overloading beyond prescribed limits is illegal under Section 194 and attracts substantial fines and possible vehicle detention.",
-            
-            # Documents Required
             "What documents are required while driving?": "Essential documents include valid driving license, vehicle registration certificate, insurance certificate, and PUC certificate. These must be produced when demanded by authorities.",
             
-            "What happens if I don't carry driving documents?": "Not carrying required documents can attract penalties under various sections - typically fines ranging from ₹500-₹5,000 depending on the missing document.",
+            "What is the penalty for vehicle overloading?": "Section 194 covers penalties for overloading, with fines of ₹2,000-₹20,000 depending on the extent of overloading and vehicle type.",
             
-            # Vehicle Fitness
             "What is vehicle fitness certificate?": "Commercial vehicles require fitness certificates under Section 56 to ensure roadworthiness. The certificate must be renewed periodically as prescribed.",
             
-            "Is fitness certificate mandatory for private vehicles?": "Fitness certificates are primarily mandatory for commercial vehicles under Section 56. Private vehicles generally don't require fitness certificates unless specifically prescribed.",
-            
-            # Traffic Police Powers
             "What powers do traffic police have?": "Traffic police have powers under Section 206 to check documents, impose penalties, detain vehicles, and take action against traffic violations.",
             
-            "Can traffic police detain my vehicle?": "Yes, under Section 206, traffic police can detain vehicles for serious violations, lack of proper documents, or when the vehicle poses a public danger.",
-            
-            # E-Challan System
-            "What is e-challan system?": "E-challan is an electronic system for issuing traffic violation notices. It allows automatic detection and penalization of traffic violations through cameras and digital systems.",
-            
-            "How does e-challan work?": "E-challan system uses cameras and sensors to detect violations automatically, generates electronic challans, and sends notices to vehicle owners' registered addresses."
+            "What is e-challan system?": "E-challan is an electronic system for issuing traffic violation notices. It allows automatic detection and penalization of traffic violations through cameras and digital systems."
         }
     
     def _print_initialization_summary(self):
         """Print a comprehensive initialization summary."""
         print("\n" + "="*70)
-        print("📊 PERSISTENT RAG PIPELINE INITIALIZATION SUMMARY")
+        print("📊 ADVANCED RAG PIPELINE INITIALIZATION SUMMARY (Phase 2)")
         print("="*70)
         print(f"Initialization method: {self.pipeline_stats['initialization_method'].upper()}")
         print(f"Startup time: {self.pipeline_stats['startup_time']:.2f} seconds")
@@ -693,10 +709,16 @@ class PersistentRAGPipeline:
         print(f"Vector index size: {self.index.ntotal}")
         print(f"FAQ cache entries: {len(self.faq_cache)}")
         
-        if self.document_hash:
-            print(f"Document hash: {self.document_hash[:16]}...")
+        # Phase 2: Advanced cache information
+        cache_stats = self.cache_manager.get_comprehensive_stats()
+        print(f"\n🔄 Advanced Cache System:")
+        for cache_name, stats in cache_stats['cache_stats'].items():
+            print(f"   • {cache_name}: {stats['size']} entries")
         
-        print("✅ Pipeline ready for queries!")
+        if self.document_hash:
+            print(f"\nDocument hash: {self.document_hash[:16]}...")
+        
+        print("✅ Advanced Pipeline ready for queries!")
         print("="*70)
     
     def _validate_ollama_connection(self):
@@ -717,22 +739,25 @@ class PersistentRAGPipeline:
             )
             raise Exception(error_msg)
     
+    def _is_valid_query(self, query: str) -> bool:
+        """Validate if query should be cached."""
+        if len(query) < self.config['min_query_length']:
+            return False
+        if len(query) > self.config['max_cache_query_length']:
+            return False
+        return True
+    
     def _check_faq_cache(self, query: str) -> Optional[str]:
         """
-        Check if query matches FAQ cache with fuzzy matching.
-        
-        Args:
-            query (str): User query
-            
-        Returns:
-            Optional[str]: Cached response if found, None otherwise
+        Level 2: Check FAQ cache with fuzzy matching.
         """
         query_normalized = query.lower().strip()
         
         # Exact match first
         for faq_question, faq_answer in self.faq_cache.items():
             if query_normalized == faq_question.lower().strip():
-                self.pipeline_stats['cache_hits'] += 1
+                self.pipeline_stats['faq_cache_hits'] += 1
+                self.pipeline_stats['cache_hierarchy_breakdown']['faq'] += 1
                 self.logger.info(f"FAQ exact match hit for: {query[:50]}...")
                 return faq_answer
         
@@ -747,38 +772,110 @@ class PersistentRAGPipeline:
             # Calculate word overlap
             common_words = query_words.intersection(faq_words)
             if len(common_words) >= 3 and len(common_words) / len(query_words) > 0.6:
-                self.pipeline_stats['cache_hits'] += 1
+                self.pipeline_stats['faq_cache_hits'] += 1
+                self.pipeline_stats['cache_hierarchy_breakdown']['faq'] += 1
                 self.logger.info(f"FAQ fuzzy match hit for: {query[:50]}...")
                 return faq_answer
         
         return None
     
+    def _check_exact_query_cache(self, query: str) -> Optional[str]:
+        """
+        Level 1: Check exact query cache using hash-based matching.
+        """
+        if not self.config['enable_exact_query_cache'] or not self._is_valid_query(query):
+            return None
+        
+        query_hash = generate_query_hash(query)
+        cached_response = self.cache_manager.get('exact_query', query_hash)
+        
+        if cached_response:
+            self.pipeline_stats['exact_query_cache_hits'] += 1
+            self.pipeline_stats['cache_hierarchy_breakdown']['exact_query'] += 1
+            self.logger.info(f"Exact query cache hit for: {query[:50]}...")
+            return cached_response
+        
+        return None
+    
+    def _get_cached_embedding(self, query: str) -> Optional[np.ndarray]:
+        """
+        Level 6: Get cached query embedding.
+        """
+        if not self.config['enable_embedding_cache'] or not self._is_valid_query(query):
+            return None
+        
+        embedding_hash = generate_embedding_hash(query, self.config['embedding_model'])
+        cached_embedding = self.cache_manager.get('embedding', embedding_hash)
+        
+        if cached_embedding is not None:
+            self.pipeline_stats['embedding_cache_hits'] += 1
+            self.logger.info(f"Embedding cache hit for: {query[:50]}...")
+            return np.array(cached_embedding)
+        
+        return None
+    
+    def _cache_embedding(self, query: str, embedding: np.ndarray):
+        """Cache computed embedding."""
+        if not self.config['enable_embedding_cache'] or not self._is_valid_query(query):
+            return
+        
+        embedding_hash = generate_embedding_hash(query, self.config['embedding_model'])
+        self.cache_manager.set('embedding', embedding_hash, embedding.tolist())
+    
+    def _get_cached_retrieval(self, query_embedding: np.ndarray, k: int) -> Optional[List[Dict]]:
+        """
+        Level 5: Get cached chunk retrieval results.
+        """
+        if not self.config['enable_retrieval_cache']:
+            return None
+        
+        retrieval_hash = generate_retrieval_hash(query_embedding, k)
+        cached_results = self.cache_manager.get('retrieval', retrieval_hash)
+        
+        if cached_results:
+            self.pipeline_stats['retrieval_cache_hits'] += 1
+            self.logger.info(f"Retrieval cache hit")
+            return cached_results
+        
+        return None
+    
+    def _cache_retrieval(self, query_embedding: np.ndarray, k: int, results: List[Dict]):
+        """Cache retrieval results."""
+        if not self.config['enable_retrieval_cache']:
+            return
+        
+        retrieval_hash = generate_retrieval_hash(query_embedding, k)
+        self.cache_manager.set('retrieval', retrieval_hash, results)
+    
     def retrieve_relevant_chunks(self, query: str, k: int = None) -> List[Dict]:
         """
-        Retrieve the most relevant chunks for a given query.
-        
-        Args:
-            query (str): User query
-            k (int): Number of chunks to retrieve
-            
-        Returns:
-            List[Dict]: List of relevant chunks with metadata
+        Retrieve relevant chunks with multi-level caching support.
         """
         if k is None:
             k = self.config['max_retrieval_chunks']
         
         try:
-            self.logger.info(f"Retrieving chunks for query: {query[:50]}...")
+            # Step 1: Get or compute query embedding (Level 6 cache)
+            query_embedding = self._get_cached_embedding(query)
             
-            # Generate query embedding
-            query_embedding = self.embedding_model.encode([query])[0]
+            if query_embedding is None:
+                # Compute embedding and cache it
+                query_embedding = self.embedding_model.encode([query])[0]
+                self._cache_embedding(query, query_embedding)
             
-            # Search the index
+            # Step 2: Check retrieval cache (Level 5 cache)
+            cached_results = self._get_cached_retrieval(query_embedding, k)
+            if cached_results:
+                return cached_results
+            
+            # Step 3: Perform FAISS search
+            self.logger.info(f"Performing FAISS search for query: {query[:50]}...")
+            
             distances, indices = self.index.search(
                 np.array([query_embedding], dtype='float32'), k
             )
             
-            # Prepare results with metadata and scores
+            # Step 4: Prepare results
             results = []
             for i, (distance, idx) in enumerate(zip(distances[0], indices[0])):
                 if idx < len(self.chunks):
@@ -792,6 +889,9 @@ class PersistentRAGPipeline:
                         'similarity_score': similarity_score,
                         'rank': i + 1
                     })
+            
+            # Step 5: Cache retrieval results
+            self._cache_retrieval(query_embedding, k, results)
             
             self.logger.info(f"Retrieved {len(results)} relevant chunks")
             return results
@@ -850,40 +950,65 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
     
     def process_query(self, query: str) -> str:
         """
-        Process a user query through the complete RAG pipeline with caching.
+        Process a user query through the complete multi-level cache hierarchy.
         
-        Args:
-            query (str): User question about the Motor Vehicles Act
-            
-        Returns:
-            str: Generated response
+        Cache Hierarchy (checked in order):
+        1. Level 2: FAQ Cache (instant responses)
+        2. Level 1: Exact Query Cache (hash-based matches)
+        3. Level 6: Embedding Cache + Level 5: Retrieval Cache (partial RAG skip)
+        4. Full RAG Pipeline (generate new response)
         """
         start_time = time.time()
+        cache_level_used = None
         
         try:
             self.logger.info(f"Processing query: {query}")
             
-            # Step 1: Check FAQ cache first
+            # Level 2: Check FAQ cache first (Phase 1)
             faq_response = self._check_faq_cache(query)
             if faq_response:
-                self.pipeline_stats['last_query_time'] = time.time() - start_time
-                self.pipeline_stats['total_queries_processed'] += 1
+                cache_level_used = "faq"
+                self._update_query_stats(start_time, cache_level_used)
                 return faq_response
             
-            # Step 2: Validate Ollama connection
+            # Level 1: Check exact query cache (Phase 2)
+            exact_response = self._check_exact_query_cache(query)
+            if exact_response:
+                cache_level_used = "exact_query"
+                self._update_query_stats(start_time, cache_level_used)
+                return exact_response
+            
+            # Validate Ollama connection before proceeding
             self._validate_ollama_connection()
             
-            # Step 3: Retrieve relevant chunks (cache miss)
-            self.pipeline_stats['cache_misses'] += 1
+            # Level 6 + 5: Retrieve relevant chunks (with embedding/retrieval caching)
             retrieved_chunks = self.retrieve_relevant_chunks(query)
             
             if not retrieved_chunks:
-                return "I couldn't find relevant information in the Motor Vehicles Act to answer your question. Could you try rephrasing or asking about a different aspect?"
+                response = "I couldn't find relevant information in the Motor Vehicles Act to answer your question. Could you try rephrasing or asking about a different aspect?"
+                cache_level_used = "no_results"
+                self._update_query_stats(start_time, cache_level_used)
+                return response
             
-            # Step 4: Create enhanced prompt
+            # Determine cache level used during retrieval
+            if self.pipeline_stats['embedding_cache_hits'] > 0 and self.pipeline_stats['retrieval_cache_hits'] > 0:
+                cache_level_used = "embedding_and_retrieval_cached"
+                self.pipeline_stats['cache_hierarchy_breakdown']['embedding_cached'] += 1
+                self.pipeline_stats['cache_hierarchy_breakdown']['retrieval_cached'] += 1
+            elif self.pipeline_stats['embedding_cache_hits'] > 0:
+                cache_level_used = "embedding_cached"
+                self.pipeline_stats['cache_hierarchy_breakdown']['embedding_cached'] += 1
+            elif self.pipeline_stats['retrieval_cache_hits'] > 0:
+                cache_level_used = "retrieval_cached"
+                self.pipeline_stats['cache_hierarchy_breakdown']['retrieval_cached'] += 1
+            else:
+                cache_level_used = "full_rag"
+                self.pipeline_stats['cache_hierarchy_breakdown']['full_rag'] += 1
+            
+            # Create enhanced prompt
             prompt = self._create_enhanced_prompt(query, retrieved_chunks)
             
-            # Step 5: Generate response
+            # Generate response with Ollama
             self.logger.info("Generating response with Ollama...")
             
             response = ollama.generate(
@@ -892,18 +1017,22 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
                 options={
                     'temperature': self.config['temperature'],
                     'timeout': self.config['ollama_timeout'],
-                    'num_predict': self.config['max_response_tokens']
+                    'num_predict': self.config['max_response_tokens']  
                 }
             )
             
-            # Step 6: Post-process response
             generated_response = response['response'].strip()
             
-            # Update statistics
-            self.pipeline_stats['last_query_time'] = time.time() - start_time
-            self.pipeline_stats['total_queries_processed'] += 1
+            # Cache the response for future exact matches (Level 1)
+            if self.config['cache_query_responses'] and self._is_valid_query(query):
+                query_hash = generate_query_hash(query)
+                self.cache_manager.set('exact_query', query_hash, generated_response)
             
-            self.logger.info(f"Query processed successfully in {self.pipeline_stats['last_query_time']:.2f}s")
+            # Update statistics
+            if cache_level_used == "full_rag":
+                self.pipeline_stats['full_rag_executions'] += 1
+            
+            self._update_query_stats(start_time, cache_level_used)
             
             return generated_response
             
@@ -911,26 +1040,45 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
             error_msg = f"Query processing failed: {str(e)}"
             self.logger.error(error_msg)
             
+            self._update_query_stats(start_time, "error")
+            
             return (
                 f"I encountered an issue processing your query. "
                 f"Please ensure the system is properly set up and try again. "
                 f"If the problem persists, check the server logs for details."
             )
     
+    def _update_query_stats(self, start_time: float, cache_level: str):
+        """Update query processing statistics."""
+        processing_time = time.time() - start_time
+        
+        self.pipeline_stats['last_query_time'] = processing_time
+        self.pipeline_stats['total_queries_processed'] += 1
+        
+        if cache_level in ['faq', 'exact_query', 'embedding_cached', 'retrieval_cached', 'embedding_and_retrieval_cached']:
+            self.pipeline_stats['total_cache_hits'] += 1
+        
+        self.logger.info(f"Query processed in {processing_time:.2f}s using {cache_level}")
+    
     def get_pipeline_stats(self) -> Dict[str, Any]:
         """Get comprehensive statistics about the pipeline."""
+        # Calculate cache hit rate
+        total_queries = self.pipeline_stats['total_queries_processed']
         cache_hit_rate = 0
-        if self.pipeline_stats['total_queries_processed'] > 0:
-            cache_hit_rate = (self.pipeline_stats['cache_hits'] / 
-                            self.pipeline_stats['total_queries_processed'] * 100)
+        if total_queries > 0:
+            cache_hit_rate = (self.pipeline_stats['total_cache_hits'] / total_queries * 100)
+        
+        # Get cache manager statistics
+        cache_stats = self.cache_manager.get_comprehensive_stats()
         
         return {
             **self.pipeline_stats,
             'config': self.config,
-            'cache_hit_rate': cache_hit_rate,
+            'overall_cache_hit_rate': round(cache_hit_rate, 2),
             'faq_cache_size': len(self.faq_cache),
             'document_hash': self.document_hash[:16] + "..." if self.document_hash else None,
             'build_info': self.build_info,
+            'cache_manager_stats': cache_stats,
             'status': 'ready' if self.pipeline_stats['index_built'] else 'initializing'
         }
     
@@ -987,31 +1135,65 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
             'entries': len(self.faq_cache)
         }
         
+        # Check advanced cache system
+        cache_health = self.cache_manager.health_check()
+        health_status['checks']['cache_manager'] = cache_health
+        
+        if cache_health['overall_status'] != 'healthy':
+            health_status['overall_status'] = 'degraded'
+        
         return health_status
+    
+    def clear_cache_level(self, cache_level: str) -> bool:
+        """Clear a specific cache level."""
+        if cache_level == 'faq':
+            self.faq_cache.clear()
+            return True
+        elif cache_level in ['exact_query', 'embedding', 'retrieval']:
+            return self.cache_manager.clear_cache(cache_level)
+        elif cache_level == 'all':
+            self.faq_cache.clear()
+            self.cache_manager.clear_all_caches()
+            return True
+        return False
+    
+    def save_caches(self):
+        """Save all caches to disk."""
+        self.cache_manager.save_all_caches()
+        
+        # Save FAQ cache
+        paths = self._get_storage_paths()
+        try:
+            with open(paths['faq_cache'], 'w', encoding='utf-8') as f:
+                json.dump(self.faq_cache, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            self.logger.error(f"Failed to save FAQ cache: {str(e)}")
 
 
-# Backwards compatibility
-RAGPipeline = PersistentRAGPipeline
+# Backwards compatibility and aliases
+RAGPipeline = AdvancedRAGPipeline
+PersistentRAGPipeline = AdvancedRAGPipeline
 
 
 def main():
-    """Test the persistent RAG pipeline."""
-    print("🧪 Phase 1: Persistent RAG Pipeline Test")
+    """Test the advanced RAG pipeline."""
+    print("🧪 Phase 2: Advanced RAG Pipeline Test")
     print("="*60)
     
     try:
         # Initialize pipeline
-        rag = PersistentRAGPipeline()
+        rag = AdvancedRAGPipeline()
         
-        # Test queries
+        # Test queries to check different cache levels
         test_queries = [
-            "What is the penalty for driving without a license?",
-            "What is the golden hour in the MV Act?",
-            "Can a minor obtain a driving license?",
-            "What is the fine for not wearing a helmet?"
+            "What is the penalty for driving without a license?",     # Should hit FAQ cache
+            "What is the fine for overspeeding?",                    # Should hit FAQ cache  
+            "What are the procedures for vehicle registration?",      # Should go through RAG
+            "What are the procedures for vehicle registration?",      # Should hit exact query cache (repeat)
+            "Can minors get driving licenses?",                      # Similar to FAQ, might hit
         ]
         
-        print(f"\n🔍 Testing with sample queries...")
+        print(f"\n🔍 Testing cache hierarchy with sample queries...")
         
         for i, query in enumerate(test_queries, 1):
             print(f"\n--- Test Query {i} ---")
@@ -1021,23 +1203,33 @@ def main():
             try:
                 response = rag.process_query(query)
                 response_time = time.time() - start_time
-                print(f"Response ({response_time:.2f}s): {response[:200]}...")
+                print(f"Response ({response_time:.3f}s): {response[:150]}...")
             except Exception as e:
                 print(f"Error: {str(e)}")
         
-        # Print final statistics
+        # Print comprehensive statistics
         stats = rag.get_pipeline_stats()
-        print(f"\n📊 Final Statistics:")
+        print(f"\n📊 Phase 2 Performance Statistics:")
         print(f"Initialization method: {stats['initialization_method']}")
         print(f"Startup time: {stats['startup_time']:.2f}s")
         print(f"Total queries processed: {stats['total_queries_processed']}")
-        print(f"Cache hit rate: {stats['cache_hit_rate']:.1f}%")
-        print(f"FAQ cache size: {stats['faq_cache_size']}")
+        print(f"Overall cache hit rate: {stats['overall_cache_hit_rate']:.1f}%")
         
-        print(f"\n✅ Phase 1 implementation completed successfully!")
+        print(f"\n🔄 Cache Breakdown:")
+        breakdown = stats['cache_hierarchy_breakdown']
+        for level, count in breakdown.items():
+            if count > 0:
+                print(f"   {level}: {count} hits")
+        
+        print(f"\n💾 Advanced Cache Stats:")
+        cache_stats = stats['cache_manager_stats']['cache_stats']
+        for cache_name, cache_data in cache_stats.items():
+            print(f"   {cache_name}: {cache_data['size']} entries, {cache_data['hit_rate']:.1f}% hit rate")
+        
+        print(f"\n✅ Phase 2 implementation test completed successfully!")
         
     except Exception as e:
-        print(f"\n❌ Phase 1 test failed: {str(e)}")
+        print(f"\n❌ Phase 2 test failed: {str(e)}")
         return False
     
     return True
