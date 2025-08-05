@@ -23,7 +23,7 @@ def process_mv_act_document(input_file, output_file):
         f.write(cleaned_text)
 
 if __name__ == '__main__':
-    input_file = 'data/output/raw_mv_act.txt'  # Save the provided document text as raw_mv_act.txt
+    input_file = 'data/output/raw_data.txt'  # Save the provided document text as raw_mv_act.txt
     output_file = 'data/output/mv_act_cleaned.txt'
     process_mv_act_document(input_file, output_file)
     print(f"Cleaned text saved to {output_file}")
