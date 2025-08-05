@@ -220,7 +220,7 @@ class EnhancedRAGPipeline:
         """Load and process the cleaned legal document."""
         print("📖 Loading and processing document...")
         
-        document_path = 'mv_act_cleaned.txt'
+        document_path = 'data/output/mv_act_cleaned.txt'
         
         try:
             # Validate document exists

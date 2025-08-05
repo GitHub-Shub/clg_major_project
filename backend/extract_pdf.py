@@ -307,8 +307,8 @@ def main():
     
     # Configure file paths
     # You can modify these paths as needed
-    pdf_path = 'MV Act English.pdf'  # Input PDF file
-    output_path = 'raw_mv_act.txt'   # Output text file
+    pdf_path = 'data/pdf/MV Act English.pdf'  # Input PDF file
+    output_path = 'data/output/raw_mv_act.txt'   # Output text file
     
     # Check if custom paths were provided via command line
     if len(sys.argv) > 1:
