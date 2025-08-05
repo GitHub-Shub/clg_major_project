@@ -1,3 +1,19 @@
+# backend/app.py
+"""
+Phase 4: Flask App with Integrated Explainable AI
+=================================================
+
+This application integrates the Phase 3 IntelligentRAGPipeline with the
+Phase 4 Explainable AI module, providing a comprehensive and transparent
+AI system through a unified API.
+
+New Features (Phase 4 Integration):
+- The primary `/query` endpoint now returns a detailed explanation by default.
+- Endpoint `/query/explained` remains for compatibility but is now redundant.
+- The core RAG pipeline is wrapped by the explainability module at startup.
+- All previous Phase 2/3 features (caching, stats, health checks) remain active.
+"""
+
 from flask import Flask, request, jsonify, send_from_directory
 import json
 import os
@@ -5,23 +21,48 @@ import subprocess
 import time
 import sys
 import logging
+import threading
+from datetime import datetime, timedelta
+from typing import Dict, Any, Optional
+
+# PHASE 4: Import the explainability wrapper, route-adder, and Enum
+from explainable_ai import RAGPipelineWithExplanations, add_explanation_routes, ExplanationLevel
 
 app = Flask(__name__, static_folder="../static", static_url_path="/static")
 
-# Configure logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+# Configure detailed logging
+logging.basicConfig(
+    level=logging.INFO, # Changed to INFO for cleaner production logs
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
 
 def start_ollama_server():
+    """Start Ollama server if not already running."""
     try:
         result = subprocess.run(['ollama', 'list'], capture_output=True, text=True, timeout=10)
         if result.returncode == 0:
             app.logger.info("Ollama server is already running.")
             return None
+        
+        # Start Ollama server based on platform
         if sys.platform.startswith('win'):
-            process = subprocess.Popen(['start', '/B', 'ollama', 'serve'], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen(
+                ['start', '/B', 'ollama', 'serve'], 
+                shell=True, 
+                stdout=subprocess.PIPE, 
+                stderr=subprocess.PIPE
+            )
         else:
-            process = subprocess.Popen(['nohup', 'ollama', 'serve'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen(
+                ['nohup', 'ollama', 'serve'], 
+                stdout=subprocess.PIPE, 
+                stderr=subprocess.PIPE
+            )
+        
+        # Wait for server to start
         time.sleep(5)
+        
+        # Verify server is running
         result = subprocess.run(['ollama', 'list'], capture_output=True, text=True, timeout=10)
         if result.returncode == 0:
             app.logger.info("Ollama server started successfully.")
@@ -29,76 +70,220 @@ def start_ollama_server():
         else:
             app.logger.error("Failed to start Ollama server.")
             return None
+            
     except Exception as e:
         app.logger.error(f"Error starting Ollama server: {str(e)}")
         return None
 
-ollama_process = start_ollama_server()
-try:
-    from rag_pipeline import RAGPipeline
-    rag = RAGPipeline()
-except Exception as e:
-    app.logger.error(f"Failed to initialize RAG pipeline: {str(e)}")
-    rag = None
+def initialize_rag_pipeline():
+    """Initialize the RAG pipeline and wrap it with the explainability module."""
+    try:
+        app.logger.info("Initializing Intelligent RAG Pipeline (Phase 3)...")
+        start_time = time.time()
+        
+        # Import the intelligent pipeline
+        from rag_pipeline import IntelligentRAGPipeline
+        
+        # Initialize with optimized configuration for Phase 3
+        config = {
+            'ollama_model': 'tinyllama',
+            'ollama_timeout': 30,
+            'temperature': 0.3,
+            'max_response_tokens': 500,
+            'chunk_size': 600,
+            'chunk_overlap': 100,
+            'max_retrieval_chunks': 5,
+            
+            # Phase 2 Caching
+            'enable_exact_query_cache': True,
+            'enable_embedding_cache': True,
+            'enable_retrieval_cache': True,
+            'cache_query_responses': True,
+            'min_query_length': 3,
+            'max_cache_query_length': 500,
 
-FAQ_CACHE = 'faq_cache.json'
-if os.path.exists(FAQ_CACHE):
-    with open(FAQ_CACHE, 'r', encoding='utf-8') as f:
-        faq_cache = json.load(f)
+            # Phase 3 Caching
+            'enable_semantic_cache': True,
+            'enable_precomputed_cache': True,
+            'semantic_similarity_threshold': 0.85,
+            'confidence_threshold': 0.7,
+            'enable_background_tasks': True,
+            'auto_cluster_creation': True,
+        }
+        
+        base_rag_pipeline = IntelligentRAGPipeline(config=config)
+        
+        # PHASE 4: Wrap the base pipeline with the explainability module
+        app.logger.info("Wrapping pipeline with Explainable AI module (Phase 4)...")
+        explainable_rag = RAGPipelineWithExplanations(base_rag_pipeline)
+        
+        initialization_time = time.time() - start_time
+        app.logger.info(f"Intelligent & Explainable RAG pipeline initialized in {initialization_time:.2f} seconds")
+        app.logger.info(f"Initialization method: {explainable_rag.pipeline_stats['initialization_method']}")
+        
+        return explainable_rag
+        
+    except Exception as e:
+        app.logger.error(f"Failed to initialize RAG pipeline: {str(e)}", exc_info=True)
+        return None
+
+def start_background_tasks(rag_pipeline):
+    """Start background maintenance tasks for cache management."""
+    if not rag_pipeline:
+        return
+    
+    if rag_pipeline.config.get('enable_background_tasks'):
+        app.logger.info("Background tasks are managed by the RAG pipeline.")
+    else:
+        app.logger.info("Background tasks are disabled by pipeline configuration.")
+
+
+# --- Global variables & Application Startup ---
+print("🚀 Starting Motor Vehicles Act Chatbot with Explainable AI (Phase 4)")
+print("=" * 70)
+
+# Step 1: Start Ollama server
+print("📡 Starting Ollama server...")
+ollama_process = start_ollama_server()
+
+# Step 2: Initialize RAG pipeline with explainability
+print("🧠 Initializing RAG pipeline with Explainability...")
+rag = initialize_rag_pipeline()
+
+if rag is None:
+    print("❌ Failed to initialize RAG pipeline. Server will run in limited mode.")
 else:
-    faq_cache = {
-        "What is the penalty for driving without a license?": "Hey! Driving without a valid license? That's a no-go under Section 181. You'll face a fine of ₹5000. Keep that license handy!",
-        "What is the golden hour in the MV Act?": "Alright, the 'golden hour' in the MV Act, under Section 2(12A), is that critical one-hour window after a serious accident where quick medical help can save lives. Think of it as the race-against-time moment!",
-        "What is the punishment for overspeeding?": "Speeding ticket blues? Section 183 says light vehicles get a ₹1000-₹2000 fine, while medium/heavy ones face ₹2000-₹4000. Repeat offenders might lose their license too. Slow down, champ!",
-        "What is the fine for not wearing a helmet?": "No helmet, no bueno! Section 194D slaps a ₹1000 fine for riding a two-wheeler without a helmet, and you could lose your license for three months. Safety first, right?",
-        "Can a minor obtain a driving license under the MV Act?": "Kids behind the wheel? Nope! Section 4 says you gotta be 18 for a driving license, though 16-year-olds can snag a learner’s for certain vehicles. Gotta wait a bit!",
-        "What happens if I drive a vehicle without a valid registration?": "Driving unregistered? Ouch! Section 192 hits you with a fine up to ₹5000 for the first offense, and up to ₹10,000 or even 7 years in jail for repeats. Get that registration sorted!"
-    }
-    with open(FAQ_CACHE, 'w', encoding='utf-8') as f:
-        json.dump(faq_cache, f, indent=2)
+    print("✅ RAG pipeline with Explainable AI initialized successfully.")
+    stats = rag.get_pipeline_stats()
+    print(f"   Startup time: {stats['startup_time']:.2f}s")
+    print(f"   Method: {stats['initialization_method']}")
+    print(f"   Chunks: {stats['total_chunks']}")
+    
+    # Start background tasks if enabled in config
+    start_background_tasks(rag)
+
+# PHASE 4: Add the explanation-specific API routes to the Flask app
+if rag:
+    print("✅ Adding Explainable AI API routes...")
+    add_explanation_routes(app, rag)
+    print("   Routes /query/explained, /explanation/*, /explanations/* are now available.")
+else:
+    print("⚠️ Could not add Explainable AI routes because pipeline initialization failed.")
+
+print("=" * 70)
+
+
+# --- API Endpoints ---
 
 @app.route('/')
 def serve_index():
+    """Serve the main HTML interface."""
     app.logger.info("Serving index.html")
     return send_from_directory('../static', 'index.html')
 
 @app.route('/query', methods=['POST'])
 def handle_query():
+    """
+    Handle user queries. This endpoint now ALWAYS returns the response along
+    with a detailed explanation, making explainability a default feature.
+    """
     try:
         data = request.json
         query = data.get('query', '').strip()
-        app.logger.info(f"Received query: {query}")
+        
         if not query:
             app.logger.warning("Empty query received")
-            return jsonify({'response': 'Hey, give me something to work with! Ask a question about the Motor Vehicles Act.'}), 400
-        if query in faq_cache:
-            app.logger.info(f"Returning cached response for query: {query}")
-            return jsonify({'response': faq_cache[query]})
+            return jsonify({'response': 'Please ask a question!', 'source': 'validation_error'}), 400
+        
+        app.logger.info(f"Processing query via /query endpoint (with default explanation): {query[:100]}...")
+        
         if rag is None:
             app.logger.error("RAG pipeline is not initialized")
-            return jsonify({
-                'response': "Oops, my advanced answering system is down. Try a simple question like 'What is the penalty for driving without a license?' or check the server logs!"
-            }), 503
-        response = rag.process_query(query)
-        app.logger.info(f"Returning RAG response for query: {query}")
-        return jsonify({'response': response})
+            return jsonify({'response': "The answering system is currently unavailable.", 'source': 'system_error'}), 503
+        
+        # Always call the method that includes the explanation.
+        # Defaulting to a detailed explanation for maximum transparency.
+        result = rag.process_query_with_explanation(
+            query, 
+            explanation_level=ExplanationLevel.DETAILED,
+            include_explanation=True
+        )
+        
+        app.logger.info(f"Query processed in {result.get('processing_time_ms', 0):.1f}ms with explanation.")
+        
+        # The 'result' dictionary already contains the response, explanation, etc.
+        return jsonify(result)
+        
     except Exception as e:
-        app.logger.error(f"Error processing query: {str(e)}")
+        app.logger.error(f"Error processing query: {str(e)}", exc_info=True)
+        return jsonify({'response': f"An error occurred: {str(e)}", 'source': 'processing_error'}), 500
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    """
+    Comprehensive health check. The call is delegated to the underlying pipeline.
+    """
+    try:
+        app.logger.info("Health check requested")
+        if rag is None:
+            return jsonify({'overall_status': 'degraded', 'error': 'RAG pipeline not initialized'}), 503
+        
+        rag_health = rag.health_check()
+        status_code = 200 if rag_health.get('overall_status') == 'healthy' else 503
+        return jsonify(rag_health), status_code
+        
+    except Exception as e:
+        app.logger.error(f"Health check failed: {str(e)}", exc_info=True)
+        return jsonify({'overall_status': 'error', 'error': str(e)}), 500
+
+@app.route('/stats', methods=['GET'])
+def get_statistics():
+    """
+    Get detailed pipeline and cache statistics for monitoring.
+    """
+    try:
+        if rag is None:
+            return jsonify({'error': 'RAG pipeline not available'}), 503
+        
+        stats = rag.get_pipeline_stats()
+        return jsonify(stats)
+        
+    except Exception as e:
+        app.logger.error(f"Error getting statistics: {str(e)}", exc_info=True)
+        return jsonify({'error': str(e)}), 500
+
+@app.errorhandler(404)
+def not_found(error):
+    if rag is None:
         return jsonify({
-            'response': f"Sorry, something went wrong: {str(e)}. Try a question like 'What is the penalty for driving without a license?' or check the server logs."
-        }), 503
+            'error': 'Endpoint not found or Pipeline not initialized',
+            'message': 'The requested endpoint does not exist or the RAG pipeline failed to start.'
+        }), 404
+    return jsonify({'error': 'Endpoint not found'}), 404
 
-@app.route('/test', methods=['GET'])
-def test_endpoint():
-    app.logger.info("Test endpoint accessed")
-    return jsonify({'status': 'Backend is running', 'rag_status': 'Initialized' if rag else 'Failed'}), 200
+@app.errorhandler(500)
+def internal_error(error):
+    return jsonify({'error': 'Internal server error'}), 500
 
-@app.teardown_appcontext
-def cleanup(exception=None):
-    if ollama_process and sys.platform.startswith('win'):
-        app.logger.info("Terminating Ollama process")
-        subprocess.run(['taskkill', '/PID', str(ollama_process.pid), '/F'], shell=True)
 
 if __name__ == '__main__':
-    app.logger.info("Starting Flask server on port 5000")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.start_time = time.time()
+    
+    print("\n🌐 Server starting on http://localhost:5001")
+    print("📊 Available endpoints:")
+    print("   GET  /                  - Web interface")
+    print("   POST /query              - Process queries (now WITH default explanation)")
+    print("   GET  /health            - Health check")
+    print("   GET  /stats             - Detailed statistics")
+    print("\n💡 Phase 4: Explainable AI Endpoints:")
+    print("   POST /query/explained    - Get response with full explanation (now redundant)")
+    print("   GET  /explanation/<id>  - Retrieve a specific explanation")
+    print("   GET  /explanations/stats  - Get statistics on explanation generation")
+    print("   POST /explanations/export - Export explanation history")
+    
+    try:
+        app.run(debug=True, host='0.0.0.0', port=5001)
+    except Exception as e:
+        print(f"\n❌ Server error: {str(e)}")
+    finally:
+        print("\n👋 Server stopped")

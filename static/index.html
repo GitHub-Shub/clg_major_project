@@ -3,18 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MV Act Chatbot</title>
+    <title>Motor Vehicles Act Chatbot (Phase 4)</title>
     <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-header">
-            <h2>MV Act Chatbot</h2>
-        </div>
-        <div class="chat-messages" id="chatMessages"></div>
-        <div class="chat-input">
-            <input type="text" id="userInput" placeholder="Ask about the Motor Vehicles Act...">
-            <button onclick="sendMessage()">Send</button>
+    <div class="container">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>Motor Vehicles Act Chatbot</h2>
+                <p>Your AI assistant for Indian traffic laws</p>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Initial bot message -->
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <p>Welcome! How can I help you with the Motor Vehicles Act today?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <div class="chat-input">
+                    <input type="text" id="userInput" placeholder="Ask about fines, licenses, or traffic rules...">
+                    <button id="sendButton" onclick="sendMessage()">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     <script src="/static/script.js"></script>
