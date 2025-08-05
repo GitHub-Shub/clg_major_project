@@ -1,18 +1,24 @@
 # backend/rag_pipeline.py
 """
-Phase 2: Enhanced RAG Pipeline with Multi-Level Caching
+Phase 3: Intelligent RAG Pipeline with Semantic Caching
 ======================================================
 
-This enhanced version builds on Phase 1 and adds advanced caching layers
-for maximum performance optimization.
+This enhanced version builds on Phase 2 and adds intelligent semantic caching
+and pre-computed responses for maximum performance optimization.
 
-Phase 2 Features (NEW):
+Phase 3 Features (NEW):
+- Level 3: Semantic Query Cache (embedding similarity clustering)
+- Level 4: Pre-computed Response Cache (topic-based responses)
+- Intelligent cache hierarchy with confidence scoring
+- Background cache warming and optimization
+- Usage pattern analysis and learning
+- Dynamic cluster management
+
+Phase 2 Features (RETAINED):
 - Level 1: Exact Query Cache (hash-based exact matches)
 - Level 5: Chunk Retrieval Cache (FAISS search results)
 - Level 6: Query Embedding Cache (computed embeddings)
-- Intelligent cache hierarchy and fallback system
 - Advanced memory management and TTL support
-- Comprehensive cache analytics and monitoring
 
 Phase 1 Features (RETAINED):
 - Persistent FAISS index storage
@@ -40,7 +46,7 @@ from datetime import datetime, timedelta
 import re
 from typing import Dict, List, Tuple, Optional, Any
 
-# Import cache management system
+# Import cache management systems
 from cache_manager import (
     CacheManager, 
     get_cache_manager, 
@@ -48,28 +54,35 @@ from cache_manager import (
     generate_embedding_hash, 
     generate_retrieval_hash
 )
+from semantic_cache_manager import (
+    SemanticCacheManager,
+    BackgroundCacheManager,
+    get_semantic_cache_manager
+)
 
 
-class AdvancedRAGPipeline:
+class IntelligentRAGPipeline:
     """
-    Advanced RAG pipeline with multi-level caching and persistent storage.
+    Intelligent RAG pipeline with semantic caching and pre-computed responses.
     
     Cache Hierarchy (checked in order):
     1. Level 2: FAQ Cache (instant responses for common questions)
     2. Level 1: Exact Query Cache (hash-based exact matches)
-    3. Level 6: Query Embedding Cache (skip embedding computation)
-    4. Level 5: Chunk Retrieval Cache (skip FAISS search)
-    5. Full RAG Pipeline (generate new response)
+    3. Level 3: Semantic Query Cache (similarity-based matches) [NEW]
+    4. Level 4: Pre-computed Response Cache (topic-based responses) [NEW]
+    5. Level 6: Query Embedding Cache (skip embedding computation)
+    6. Level 5: Chunk Retrieval Cache (skip FAISS search)
+    7. Full RAG Pipeline (generate new response)
     """
     
     def __init__(self, config=None):
         """
-        Initialize the advanced RAG pipeline with multi-level caching.
+        Initialize the intelligent RAG pipeline with semantic caching.
         
         Args:
             config (dict): Configuration options for the pipeline
         """
-        # Default configuration optimized for advanced caching
+        # Default configuration optimized for intelligent caching
         self.config = {
             # Model settings
             'embedding_model': 'all-MiniLM-L6-v2',
@@ -99,9 +112,18 @@ class AdvancedRAGPipeline:
             'min_query_length': 3,
             'max_cache_query_length': 500,
             
+            # Semantic cache settings (Phase 3)
+            'enable_semantic_cache': True,
+            'enable_precomputed_cache': True,
+            'semantic_similarity_threshold': 0.85,
+            'confidence_threshold': 0.7,
+            'enable_background_tasks': True,
+            'auto_cluster_creation': True,
+            'max_semantic_clusters': 100,
+            
             # Performance settings
             'faq_cache_size': 100,
-            'index_version': '2.0',  # Updated for Phase 2
+            'index_version': '3.0',  # Updated for Phase 3
         }
         
         # Update with user configuration
@@ -111,8 +133,10 @@ class AdvancedRAGPipeline:
         # Initialize paths
         self._setup_directories()
         
-        # Initialize cache manager
+        # Initialize cache managers
         self.cache_manager = get_cache_manager(self.config['cache_dir'])
+        self.semantic_cache_manager = None  # Will be initialized after embedding model
+        self.background_manager = None
         
         # Initialize components
         self.embedding_model = None
@@ -128,7 +152,7 @@ class AdvancedRAGPipeline:
         # FAQ cache (Phase 1)
         self.faq_cache = {}
         
-        # Statistics and metrics (enhanced for Phase 2)
+        # Statistics and metrics (enhanced for Phase 3)
         self.pipeline_stats = {
             'initialization_method': 'unknown',
             'startup_time': 0,
@@ -142,7 +166,7 @@ class AdvancedRAGPipeline:
             'last_query_time': 0,
             'total_queries_processed': 0,
             
-            # Phase 2: Enhanced cache statistics
+            # Phase 2: Cache statistics
             'faq_cache_hits': 0,
             'exact_query_cache_hits': 0,
             'embedding_cache_hits': 0,
@@ -150,12 +174,29 @@ class AdvancedRAGPipeline:
             'full_rag_executions': 0,
             'total_cache_hits': 0,
             'cache_saves': 0,
+            
+            # Phase 3: Semantic cache statistics
+            'semantic_cache_hits': 0,
+            'precomputed_cache_hits': 0,
+            'semantic_clusters_created': 0,
+            'precomputed_responses_generated': 0,
+            'background_tasks_completed': 0,
+            
             'cache_hierarchy_breakdown': {
                 'faq': 0,
                 'exact_query': 0,
+                'semantic': 0,
+                'precomputed': 0,
                 'embedding_cached': 0,
                 'retrieval_cached': 0,
                 'full_rag': 0
+            },
+            
+            # Response confidence tracking
+            'confidence_scores': {
+                'high_confidence': 0,    # > 0.9
+                'medium_confidence': 0,  # 0.7 - 0.9
+                'low_confidence': 0      # < 0.7
             }
         }
         
@@ -172,7 +213,7 @@ class AdvancedRAGPipeline:
             format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
             handlers=[logging.StreamHandler(sys.stdout)]
         )
-        self.logger = logging.getLogger('AdvancedRAGPipeline')
+        self.logger = logging.getLogger('IntelligentRAGPipeline')
     
     def _setup_directories(self):
         """Create necessary directories for persistent storage and caching."""
@@ -225,18 +266,26 @@ class AdvancedRAGPipeline:
             'chunk_overlap': self.config['chunk_overlap'],
             'legal_sections': self.pipeline_stats['legal_sections_found'],
             'tables_preserved': self.pipeline_stats['tables_found'],
-            'phase': 2,  # Phase 2 marker
+            'phase': 3,  # Phase 3 marker
             'cache_features': {
                 'exact_query_cache': self.config['enable_exact_query_cache'],
                 'embedding_cache': self.config['enable_embedding_cache'],
-                'retrieval_cache': self.config['enable_retrieval_cache']
+                'retrieval_cache': self.config['enable_retrieval_cache'],
+                'semantic_cache': self.config['enable_semantic_cache'],
+                'precomputed_cache': self.config['enable_precomputed_cache']
+            },
+            'semantic_features': {
+                'similarity_threshold': self.config['semantic_similarity_threshold'],
+                'confidence_threshold': self.config['confidence_threshold'],
+                'max_clusters': self.config['max_semantic_clusters'],
+                'background_tasks': self.config['enable_background_tasks']
             }
         }
         
         with open(paths['build_info'], 'w', encoding='utf-8') as f:
             json.dump(self.build_info, f, indent=2)
         
-        self.logger.info(f"Build info saved: {len(self.chunks)} chunks, Phase 2 features enabled")
+        self.logger.info(f"Build info saved: {len(self.chunks)} chunks, Phase 3 features enabled")
     
     def _load_build_info(self) -> bool:
         """Load and validate build information."""
@@ -301,11 +350,14 @@ class AdvancedRAGPipeline:
             # Save build info
             self._save_build_info()
             
-            # Save advanced caches
+            # Save all cache data
             self.cache_manager.save_all_caches()
+            if self.semantic_cache_manager:
+                self.semantic_cache_manager.save_all_semantic_data()
+            
             self.pipeline_stats['cache_saves'] += 1
             
-            self.logger.info("Vector store and caches saved successfully")
+            self.logger.info("Vector store and all caches saved successfully")
             
         except Exception as e:
             self.logger.error(f"Error saving vector store: {str(e)}")
@@ -349,10 +401,10 @@ class AdvancedRAGPipeline:
             return False
     
     def _initialize_pipeline(self):
-        """Initialize the pipeline with persistent storage and advanced caching."""
+        """Initialize the pipeline with persistent storage and intelligent caching."""
         start_time = time.time()
         
-        print("🚀 Initializing Advanced RAG Pipeline (Phase 2)")
+        print("🚀 Initializing Intelligent RAG Pipeline (Phase 3)")
         print("=" * 70)
         
         try:
@@ -362,10 +414,13 @@ class AdvancedRAGPipeline:
             # Step 2: Setup text splitter
             self._setup_text_splitter()
             
-            # Step 3: Load FAQ cache
+            # Step 3: Initialize semantic cache manager (Phase 3)
+            self._initialize_semantic_caching()
+            
+            # Step 4: Load FAQ cache
             self._load_faq_cache()
             
-            # Step 4: Try to load existing vector store
+            # Step 5: Try to load existing vector store
             if self._load_build_info() and self._load_vector_store():
                 print("✅ Loaded existing vector store from cache")
                 self.pipeline_stats['initialization_method'] = 'loaded'
@@ -374,8 +429,8 @@ class AdvancedRAGPipeline:
                 self._build_vector_store_from_scratch()
                 self.pipeline_stats['initialization_method'] = 'built'
             
-            # Step 5: Initialize advanced caches (Phase 2)
-            self._initialize_advanced_caches()
+            # Step 6: Initialize background processing (Phase 3)
+            self._initialize_background_processing()
             
             # Record initialization time
             self.pipeline_stats['startup_time'] = time.time() - start_time
@@ -383,29 +438,58 @@ class AdvancedRAGPipeline:
             # Print success summary
             self._print_initialization_summary()
             
-            self.logger.info("Advanced RAG Pipeline initialized successfully")
+            self.logger.info("Intelligent RAG Pipeline initialized successfully")
             
         except Exception as e:
-            self.logger.error(f"Failed to initialize Advanced RAG Pipeline: {str(e)}")
+            self.logger.error(f"Failed to initialize Intelligent RAG Pipeline: {str(e)}")
             print(f"\n❌ INITIALIZATION FAILED: {str(e)}")
             raise
     
-    def _initialize_advanced_caches(self):
-        """Initialize Phase 2 advanced caching features."""
-        print("🔄 Initializing advanced cache system...")
+    def _initialize_semantic_caching(self):
+        """Initialize Phase 3 semantic caching features."""
+        print("🧠 Initializing semantic cache system...")
         
-        # Get cache statistics
-        cache_stats = self.cache_manager.get_comprehensive_stats()
+        # Initialize semantic cache manager with embedding model
+        self.semantic_cache_manager = SemanticCacheManager(
+            cache_dir=self.config['cache_dir'],
+            embedding_model=self.embedding_model
+        )
         
-        print(f"   Cache levels available:")
-        for cache_name, stats in cache_stats['cache_stats'].items():
-            print(f"   • {cache_name}: {stats['size']} entries, {stats['hit_rate']:.1f}% hit rate")
+        # Configure semantic caching parameters
+        self.semantic_cache_manager.similarity_threshold = self.config['semantic_similarity_threshold']
+        self.semantic_cache_manager.max_clusters = self.config['max_semantic_clusters']
         
-        memory_usage = cache_stats['memory_usage']
-        if 'total' in memory_usage:
-            print(f"   Total cache memory: {memory_usage['total']['size_mb']} MB")
+        # Get initial statistics
+        semantic_stats = self.semantic_cache_manager.get_semantic_stats()
         
-        print(f"   ✅ Advanced cache system ready")
+        print(f"   Semantic clusters: {semantic_stats['semantic_clusters']['total_clusters']}")
+        print(f"   Pre-computed responses: {semantic_stats['precomputed_responses']['total_responses']}")
+        print(f"   Similarity threshold: {self.config['semantic_similarity_threshold']}")
+        print(f"   ✅ Semantic cache system ready")
+    
+    def _initialize_background_processing(self):
+        """Initialize background processing for cache optimization."""
+        if not self.config['enable_background_tasks']:
+            print("   ⚠️ Background tasks disabled")
+            return
+        
+        print("🔄 Initializing background processing...")
+        
+        try:
+            # Initialize background cache manager
+            self.background_manager = BackgroundCacheManager(
+                semantic_cache_manager=self.semantic_cache_manager,
+                rag_pipeline=self
+            )
+            
+            # Start background tasks
+            self.background_manager.start_background_tasks()
+            
+            print(f"   ✅ Background processing started")
+            
+        except Exception as e:
+            print(f"   ⚠️ Background processing failed to start: {str(e)}")
+            self.logger.warning(f"Background processing initialization failed: {str(e)}")
     
     def _load_embedding_model(self):
         """Load and validate the sentence transformer model."""
@@ -613,7 +697,7 @@ class AdvancedRAGPipeline:
     
     def _create_enhanced_faq_cache(self) -> Dict[str, str]:
         """Create an enhanced FAQ cache with 50+ entries and variations."""
-        # Reuse the FAQ cache from Phase 1 (same content)
+        # Same as Phase 2, keeping it consistent
         return {
             # Driving License Related
             "What is the penalty for driving without a license?": "As per Section 181 of the Motor Vehicles Act 1988, driving without a valid license is punishable with a fine of ₹5,000. This applies to all motor vehicles and is a serious traffic violation.",
@@ -677,7 +761,7 @@ class AdvancedRAGPipeline:
             
             "What does golden hour mean in motor vehicle act?": "Section 2(12A) defines 'golden hour' as the critical one-hour window after an accident when immediate medical care can save lives. The Act mandates provisions for emergency medical care during this period.",
             
-            # Additional entries for Phase 2
+            # Additional common queries for Phase 3
             "What is the penalty for using mobile phone while driving?": "Using mobile phones while driving is typically covered under Section 177 for traffic rule violations, with fines ranging from ₹1,000-₹5,000.",
             
             "What is the fine for not wearing seat belt?": "Not wearing seat belts typically attracts a fine of ₹1,000 under various state motor vehicle rules, though the specific section varies by state.",
@@ -690,13 +774,17 @@ class AdvancedRAGPipeline:
             
             "What powers do traffic police have?": "Traffic police have powers under Section 206 to check documents, impose penalties, detain vehicles, and take action against traffic violations.",
             
-            "What is e-challan system?": "E-challan is an electronic system for issuing traffic violation notices. It allows automatic detection and penalization of traffic violations through cameras and digital systems."
+            "What is e-challan system?": "E-challan is an electronic system for issuing traffic violation notices. It allows automatic detection and penalization of traffic violations through cameras and digital systems.",
+            
+            "Can traffic police detain my vehicle?": "Yes, under Section 206, traffic police can detain vehicles for serious violations, lack of proper documents, or when the vehicle poses a public danger.",
+            
+            "What is the penalty for hit and run?": "Hit and run cases are covered under Section 161 for not providing information after accidents. Under the new criminal laws, it may also attract charges under Bharatiya Nyaya Sanhita Section 106."
         }
     
     def _print_initialization_summary(self):
         """Print a comprehensive initialization summary."""
         print("\n" + "="*70)
-        print("📊 ADVANCED RAG PIPELINE INITIALIZATION SUMMARY (Phase 2)")
+        print("📊 INTELLIGENT RAG PIPELINE INITIALIZATION SUMMARY (Phase 3)")
         print("="*70)
         print(f"Initialization method: {self.pipeline_stats['initialization_method'].upper()}")
         print(f"Startup time: {self.pipeline_stats['startup_time']:.2f} seconds")
@@ -711,14 +799,28 @@ class AdvancedRAGPipeline:
         
         # Phase 2: Advanced cache information
         cache_stats = self.cache_manager.get_comprehensive_stats()
-        print(f"\n🔄 Advanced Cache System:")
+        print(f"\n🔄 Standard Cache System:")
         for cache_name, stats in cache_stats['cache_stats'].items():
             print(f"   • {cache_name}: {stats['size']} entries")
+        
+        # Phase 3: Semantic cache information
+        if self.semantic_cache_manager:
+            semantic_stats = self.semantic_cache_manager.get_semantic_stats()
+            print(f"\n🧠 Intelligent Cache System:")
+            print(f"   • Semantic clusters: {semantic_stats['semantic_clusters']['total_clusters']}")
+            print(f"   • Pre-computed responses: {semantic_stats['precomputed_responses']['total_responses']}")
+            print(f"   • Similarity threshold: {self.config['semantic_similarity_threshold']}")
+        
+        # Background processing
+        if self.config['enable_background_tasks']:
+            print(f"\n🔄 Background Processing: ENABLED")
+        else:
+            print(f"\n🔄 Background Processing: DISABLED")
         
         if self.document_hash:
             print(f"\nDocument hash: {self.document_hash[:16]}...")
         
-        print("✅ Advanced Pipeline ready for queries!")
+        print("✅ Intelligent Pipeline ready for queries!")
         print("="*70)
     
     def _validate_ollama_connection(self):
@@ -747,9 +849,12 @@ class AdvancedRAGPipeline:
             return False
         return True
     
-    def _check_faq_cache(self, query: str) -> Optional[str]:
+    def _check_faq_cache(self, query: str) -> Optional[Tuple[str, float]]:
         """
         Level 2: Check FAQ cache with fuzzy matching.
+        
+        Returns:
+            Tuple of (response, confidence_score) if found, None otherwise
         """
         query_normalized = query.lower().strip()
         
@@ -759,7 +864,7 @@ class AdvancedRAGPipeline:
                 self.pipeline_stats['faq_cache_hits'] += 1
                 self.pipeline_stats['cache_hierarchy_breakdown']['faq'] += 1
                 self.logger.info(f"FAQ exact match hit for: {query[:50]}...")
-                return faq_answer
+                return faq_answer, 1.0  # Perfect confidence for FAQ matches
         
         # Fuzzy matching for variations
         for faq_question, faq_answer in self.faq_cache.items():
@@ -775,13 +880,17 @@ class AdvancedRAGPipeline:
                 self.pipeline_stats['faq_cache_hits'] += 1
                 self.pipeline_stats['cache_hierarchy_breakdown']['faq'] += 1
                 self.logger.info(f"FAQ fuzzy match hit for: {query[:50]}...")
-                return faq_answer
+                confidence = min(0.95, len(common_words) / len(query_words))
+                return faq_answer, confidence
         
         return None
     
-    def _check_exact_query_cache(self, query: str) -> Optional[str]:
+    def _check_exact_query_cache(self, query: str) -> Optional[Tuple[str, float]]:
         """
         Level 1: Check exact query cache using hash-based matching.
+        
+        Returns:
+            Tuple of (response, confidence_score) if found, None otherwise
         """
         if not self.config['enable_exact_query_cache'] or not self._is_valid_query(query):
             return None
@@ -793,7 +902,58 @@ class AdvancedRAGPipeline:
             self.pipeline_stats['exact_query_cache_hits'] += 1
             self.pipeline_stats['cache_hierarchy_breakdown']['exact_query'] += 1
             self.logger.info(f"Exact query cache hit for: {query[:50]}...")
-            return cached_response
+            return cached_response, 0.95  # High confidence for exact matches
+        
+        return None
+    
+    def _check_semantic_cache(self, query: str, query_embedding: np.ndarray) -> Optional[Tuple[str, float]]:
+        """
+        Level 3: Check semantic cache using similarity clustering.
+        
+        Returns:
+            Tuple of (response, confidence_score) if found, None otherwise
+        """
+        if not self.config['enable_semantic_cache'] or not self.semantic_cache_manager:
+            return None
+        
+        # Analyze query patterns for learning
+        self.semantic_cache_manager.analyze_query_patterns(query)
+        
+        # Find semantic match
+        semantic_match = self.semantic_cache_manager.find_semantic_match(query, query_embedding)
+        
+        if semantic_match:
+            response, confidence = semantic_match
+            
+            if confidence >= self.config['confidence_threshold']:
+                self.pipeline_stats['semantic_cache_hits'] += 1
+                self.pipeline_stats['cache_hierarchy_breakdown']['semantic'] += 1
+                self.logger.info(f"Semantic cache hit for: {query[:50]}... (confidence: {confidence:.3f})")
+                return response, confidence
+        
+        return None
+    
+    def _check_precomputed_cache(self, query: str) -> Optional[Tuple[str, float]]:
+        """
+        Level 4: Check pre-computed response cache using topic extraction.
+        
+        Returns:
+            Tuple of (response, confidence_score) if found, None otherwise
+        """
+        if not self.config['enable_precomputed_cache'] or not self.semantic_cache_manager:
+            return None
+        
+        # Get pre-computed response based on topic analysis
+        precomputed_match = self.semantic_cache_manager.get_precomputed_response(query)
+        
+        if precomputed_match:
+            response, confidence = precomputed_match
+            
+            if confidence >= self.config['confidence_threshold']:
+                self.pipeline_stats['precomputed_cache_hits'] += 1
+                self.pipeline_stats['cache_hierarchy_breakdown']['precomputed'] += 1
+                self.logger.info(f"Pre-computed cache hit for: {query[:50]}... (confidence: {confidence:.3f})")
+                return response, confidence
         
         return None
     
@@ -948,37 +1108,77 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
         
         return prompt
     
+    def _update_confidence_stats(self, confidence: float):
+        """Update confidence score statistics."""
+        if confidence >= 0.9:
+            self.pipeline_stats['confidence_scores']['high_confidence'] += 1
+        elif confidence >= 0.7:
+            self.pipeline_stats['confidence_scores']['medium_confidence'] += 1
+        else:
+            self.pipeline_stats['confidence_scores']['low_confidence'] += 1
+    
     def process_query(self, query: str) -> str:
         """
-        Process a user query through the complete multi-level cache hierarchy.
+        Process a user query through the complete intelligent cache hierarchy.
         
         Cache Hierarchy (checked in order):
         1. Level 2: FAQ Cache (instant responses)
         2. Level 1: Exact Query Cache (hash-based matches)
-        3. Level 6: Embedding Cache + Level 5: Retrieval Cache (partial RAG skip)
-        4. Full RAG Pipeline (generate new response)
+        3. Level 3: Semantic Cache (similarity-based matches) [NEW]
+        4. Level 4: Pre-computed Cache (topic-based responses) [NEW]
+        5. Level 6: Embedding Cache + Level 5: Retrieval Cache (partial RAG skip)
+        6. Full RAG Pipeline (generate new response)
         """
         start_time = time.time()
         cache_level_used = None
+        response_confidence = 0.0
         
         try:
             self.logger.info(f"Processing query: {query}")
             
             # Level 2: Check FAQ cache first (Phase 1)
-            faq_response = self._check_faq_cache(query)
-            if faq_response:
+            faq_result = self._check_faq_cache(query)
+            if faq_result:
+                response, confidence = faq_result
                 cache_level_used = "faq"
-                self._update_query_stats(start_time, cache_level_used)
-                return faq_response
+                response_confidence = confidence
+                self._update_query_stats(start_time, cache_level_used, confidence)
+                return response
             
             # Level 1: Check exact query cache (Phase 2)
-            exact_response = self._check_exact_query_cache(query)
-            if exact_response:
+            exact_result = self._check_exact_query_cache(query)
+            if exact_result:
+                response, confidence = exact_result
                 cache_level_used = "exact_query"
-                self._update_query_stats(start_time, cache_level_used)
-                return exact_response
+                response_confidence = confidence
+                self._update_query_stats(start_time, cache_level_used, confidence)
+                return response
             
-            # Validate Ollama connection before proceeding
+            # Get query embedding for semantic operations
+            query_embedding = self._get_cached_embedding(query)
+            if query_embedding is None:
+                query_embedding = self.embedding_model.encode([query])[0]
+                self._cache_embedding(query, query_embedding)
+            
+            # Level 3: Check semantic cache (Phase 3)
+            semantic_result = self._check_semantic_cache(query, query_embedding)
+            if semantic_result:
+                response, confidence = semantic_result
+                cache_level_used = "semantic"
+                response_confidence = confidence
+                self._update_query_stats(start_time, cache_level_used, confidence)
+                return response
+            
+            # Level 4: Check pre-computed cache (Phase 3)
+            precomputed_result = self._check_precomputed_cache(query)
+            if precomputed_result:
+                response, confidence = precomputed_result
+                cache_level_used = "precomputed"
+                response_confidence = confidence
+                self._update_query_stats(start_time, cache_level_used, confidence)
+                return response
+            
+            # Validate Ollama connection before proceeding to RAG
             self._validate_ollama_connection()
             
             # Level 6 + 5: Retrieve relevant chunks (with embedding/retrieval caching)
@@ -987,7 +1187,8 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
             if not retrieved_chunks:
                 response = "I couldn't find relevant information in the Motor Vehicles Act to answer your question. Could you try rephrasing or asking about a different aspect?"
                 cache_level_used = "no_results"
-                self._update_query_stats(start_time, cache_level_used)
+                response_confidence = 0.0
+                self._update_query_stats(start_time, cache_level_used, response_confidence)
                 return response
             
             # Determine cache level used during retrieval
@@ -1022,17 +1223,29 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
             )
             
             generated_response = response['response'].strip()
+            response_confidence = 0.8  # Default confidence for generated responses
             
             # Cache the response for future exact matches (Level 1)
             if self.config['cache_query_responses'] and self._is_valid_query(query):
                 query_hash = generate_query_hash(query)
                 self.cache_manager.set('exact_query', query_hash, generated_response)
             
+            # Add to semantic cluster if auto-clustering is enabled (Phase 3)
+            if (self.config['auto_cluster_creation'] and 
+                self.semantic_cache_manager and 
+                self._is_valid_query(query)):
+                
+                cluster_id = self.semantic_cache_manager.add_semantic_cluster(
+                    query, query_embedding, generated_response
+                )
+                self.pipeline_stats['semantic_clusters_created'] += 1
+                self.logger.info(f"Added query to semantic cluster: {cluster_id}")
+            
             # Update statistics
             if cache_level_used == "full_rag":
                 self.pipeline_stats['full_rag_executions'] += 1
             
-            self._update_query_stats(start_time, cache_level_used)
+            self._update_query_stats(start_time, cache_level_used, response_confidence)
             
             return generated_response
             
@@ -1040,7 +1253,7 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
             error_msg = f"Query processing failed: {str(e)}"
             self.logger.error(error_msg)
             
-            self._update_query_stats(start_time, "error")
+            self._update_query_stats(start_time, "error", 0.0)
             
             return (
                 f"I encountered an issue processing your query. "
@@ -1048,17 +1261,26 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
                 f"If the problem persists, check the server logs for details."
             )
     
-    def _update_query_stats(self, start_time: float, cache_level: str):
+    def _update_query_stats(self, start_time: float, cache_level: str, confidence: float):
         """Update query processing statistics."""
         processing_time = time.time() - start_time
         
         self.pipeline_stats['last_query_time'] = processing_time
         self.pipeline_stats['total_queries_processed'] += 1
         
-        if cache_level in ['faq', 'exact_query', 'embedding_cached', 'retrieval_cached', 'embedding_and_retrieval_cached']:
+        # Update confidence statistics
+        self._update_confidence_stats(confidence)
+        
+        # Count cache hits
+        cache_hit_levels = [
+            'faq', 'exact_query', 'semantic', 'precomputed', 
+            'embedding_cached', 'retrieval_cached', 'embedding_and_retrieval_cached'
+        ]
+        
+        if cache_level in cache_hit_levels:
             self.pipeline_stats['total_cache_hits'] += 1
         
-        self.logger.info(f"Query processed in {processing_time:.2f}s using {cache_level}")
+        self.logger.info(f"Query processed in {processing_time:.2f}s using {cache_level} (confidence: {confidence:.2f})")
     
     def get_pipeline_stats(self) -> Dict[str, Any]:
         """Get comprehensive statistics about the pipeline."""
@@ -1071,6 +1293,11 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
         # Get cache manager statistics
         cache_stats = self.cache_manager.get_comprehensive_stats()
         
+        # Get semantic cache statistics (Phase 3)
+        semantic_stats = {}
+        if self.semantic_cache_manager:
+            semantic_stats = self.semantic_cache_manager.get_semantic_stats()
+        
         return {
             **self.pipeline_stats,
             'config': self.config,
@@ -1079,6 +1306,7 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
             'document_hash': self.document_hash[:16] + "..." if self.document_hash else None,
             'build_info': self.build_info,
             'cache_manager_stats': cache_stats,
+            'semantic_cache_stats': semantic_stats,  # Phase 3
             'status': 'ready' if self.pipeline_stats['index_built'] else 'initializing'
         }
     
@@ -1135,11 +1363,27 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
             'entries': len(self.faq_cache)
         }
         
-        # Check advanced cache system
+        # Check standard cache system
         cache_health = self.cache_manager.health_check()
         health_status['checks']['cache_manager'] = cache_health
         
-        if cache_health['overall_status'] != 'healthy':
+        # Check semantic cache system (Phase 3)
+        if self.semantic_cache_manager:
+            semantic_health = self.semantic_cache_manager.health_check()
+            health_status['checks']['semantic_cache_manager'] = semantic_health
+            
+            if semantic_health['overall_status'] != 'healthy':
+                health_status['overall_status'] = 'degraded'
+        
+        # Check background processing
+        if self.background_manager:
+            health_status['checks']['background_processing'] = {
+                'status': 'ok' if self.background_manager.tasks_enabled else 'disabled'
+            }
+        
+        if any(check['status'] in ['error', 'unhealthy'] for check in health_status['checks'].values()):
+            health_status['overall_status'] = 'unhealthy'
+        elif any(check['status'] in ['warning', 'degraded'] for check in health_status['checks'].values()):
             health_status['overall_status'] = 'degraded'
         
         return health_status
@@ -1151,15 +1395,24 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
             return True
         elif cache_level in ['exact_query', 'embedding', 'retrieval']:
             return self.cache_manager.clear_cache(cache_level)
+        elif cache_level in ['semantic', 'precomputed', 'patterns']:
+            if self.semantic_cache_manager:
+                self.semantic_cache_manager.clear_semantic_data(cache_level)
+                return True
         elif cache_level == 'all':
             self.faq_cache.clear()
             self.cache_manager.clear_all_caches()
+            if self.semantic_cache_manager:
+                self.semantic_cache_manager.clear_semantic_data('all')
             return True
         return False
     
     def save_caches(self):
         """Save all caches to disk."""
         self.cache_manager.save_all_caches()
+        
+        if self.semantic_cache_manager:
+            self.semantic_cache_manager.save_all_semantic_data()
         
         # Save FAQ cache
         paths = self._get_storage_paths()
@@ -1168,21 +1421,34 @@ RESPONSE: Provide a comprehensive yet concise answer based on the Motor Vehicles
                 json.dump(self.faq_cache, f, indent=2, ensure_ascii=False)
         except Exception as e:
             self.logger.error(f"Failed to save FAQ cache: {str(e)}")
+    
+    def __del__(self):
+        """Cleanup when pipeline is destroyed."""
+        try:
+            # Stop background processing
+            if self.background_manager:
+                self.background_manager.stop_background_tasks()
+            
+            # Save all caches
+            self.save_caches()
+        except:
+            pass  # Ignore cleanup errors
 
 
 # Backwards compatibility and aliases
-RAGPipeline = AdvancedRAGPipeline
-PersistentRAGPipeline = AdvancedRAGPipeline
+RAGPipeline = IntelligentRAGPipeline
+PersistentRAGPipeline = IntelligentRAGPipeline
+AdvancedRAGPipeline = IntelligentRAGPipeline
 
 
 def main():
-    """Test the advanced RAG pipeline."""
-    print("🧪 Phase 2: Advanced RAG Pipeline Test")
+    """Test the intelligent RAG pipeline."""
+    print("🧪 Phase 3: Intelligent RAG Pipeline Test")
     print("="*60)
     
     try:
         # Initialize pipeline
-        rag = AdvancedRAGPipeline()
+        rag = IntelligentRAGPipeline()
         
         # Test queries to check different cache levels
         test_queries = [
@@ -1190,10 +1456,13 @@ def main():
             "What is the fine for overspeeding?",                    # Should hit FAQ cache  
             "What are the procedures for vehicle registration?",      # Should go through RAG
             "What are the procedures for vehicle registration?",      # Should hit exact query cache (repeat)
-            "Can minors get driving licenses?",                      # Similar to FAQ, might hit
+            "How do I register my vehicle?",                         # Should hit semantic cache (similar to above)
+            "What happens if I drive without proper papers?",        # Should hit precomputed cache (documentation topic)
+            "Can minors get driving licenses?",                      # Similar to FAQ, might hit semantic
+            "What is the penalty for not having documents?",        # Should hit precomputed cache
         ]
         
-        print(f"\n🔍 Testing cache hierarchy with sample queries...")
+        print(f"\n🔍 Testing intelligent cache hierarchy with sample queries...")
         
         for i, query in enumerate(test_queries, 1):
             print(f"\n--- Test Query {i} ---")
@@ -1209,27 +1478,41 @@ def main():
         
         # Print comprehensive statistics
         stats = rag.get_pipeline_stats()
-        print(f"\n📊 Phase 2 Performance Statistics:")
+        print(f"\n📊 Phase 3 Performance Statistics:")
         print(f"Initialization method: {stats['initialization_method']}")
         print(f"Startup time: {stats['startup_time']:.2f}s")
         print(f"Total queries processed: {stats['total_queries_processed']}")
         print(f"Overall cache hit rate: {stats['overall_cache_hit_rate']:.1f}%")
         
-        print(f"\n🔄 Cache Breakdown:")
+        print(f"\n🔄 Cache Hierarchy Breakdown:")
         breakdown = stats['cache_hierarchy_breakdown']
         for level, count in breakdown.items():
             if count > 0:
                 print(f"   {level}: {count} hits")
         
-        print(f"\n💾 Advanced Cache Stats:")
+        print(f"\n💾 Standard Cache Stats:")
         cache_stats = stats['cache_manager_stats']['cache_stats']
         for cache_name, cache_data in cache_stats.items():
             print(f"   {cache_name}: {cache_data['size']} entries, {cache_data['hit_rate']:.1f}% hit rate")
         
-        print(f"\n✅ Phase 2 implementation test completed successfully!")
+        print(f"\n🧠 Semantic Cache Stats:")
+        semantic_stats = stats.get('semantic_cache_stats', {})
+        if semantic_stats:
+            clusters = semantic_stats.get('semantic_clusters', {})
+            precomputed = semantic_stats.get('precomputed_responses', {})
+            print(f"   Semantic clusters: {clusters.get('total_clusters', 0)}")
+            print(f"   Pre-computed responses: {precomputed.get('total_responses', 0)}")
+        
+        print(f"\n🎯 Confidence Distribution:")
+        confidence_scores = stats.get('confidence_scores', {})
+        for level, count in confidence_scores.items():
+            if count > 0:
+                print(f"   {level.replace('_', ' ').title()}: {count}")
+        
+        print(f"\n✅ Phase 3 implementation test completed successfully!")
         
     except Exception as e:
-        print(f"\n❌ Phase 2 test failed: {str(e)}")
+        print(f"\n❌ Phase 3 test failed: {str(e)}")
         return False
     
     return True
