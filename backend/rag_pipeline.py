@@ -71,15 +71,15 @@ class RAGPipeline:
         )
         try:
             response = ollama.generate(
-                model='gemma2:2b',
+                model='tinyllama',
                 prompt=prompt,
                 options={'temperature': 0.7, 'timeout': 30}
             )
             logging.info(f"Generated response for query: {query}")
             return response['response'].strip()
         except Exception as e:
-            logging.error(f"Failed to generate response with Gemma2 2B: {str(e)}")
-            raise Exception(f"Failed to generate response with Gemma2 2B: {str(e)}")
+            logging.error(f"Failed to generate response with tinyllama: {str(e)}")
+            raise Exception(f"Failed to generate response with tinyllama: {str(e)}")
 
 # backend/faq_cache.json
 {
