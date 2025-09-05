@@ -1,6 +1,6 @@
 # Indian Traffic Law Chatbot
 
-A simple web-based chatbot that answers questions about Indian traffic laws using a Retrieval-Augmented Generation (RAG) pipeline with Ollama’s Gemma-2-9B model, built with Python 3.11 on Windows.
+A simple web-based chatbot that answers questions about Indian traffic laws using a Retrieval-Augmented Generation (RAG) pipeline with Ollama’s Gemma-2-9B model, built with Python 3.11 .
 
 ## Overview
 This project processes the file to provide legally accurate responses about traffic laws. It uses a Flask backend, stores law data in a JSON file, and generates embeddings for a FAISS index to power the chatbot.
@@ -15,5 +15,6 @@ This project processes the file to provide legally accurate responses about traf
 - **Python 3.11**
 - **Windows OS**
 - **Ollama** (for the Gemma-2-9B model)
+
 
 
